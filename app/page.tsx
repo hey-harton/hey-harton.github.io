@@ -16,45 +16,34 @@ export default function Home() {
   return (
     <main className="w-full flex-1 flex flex-col min-h-[calc(100vh-80px)] relative overflow-hidden">
       
-      {/* HERO SECTION - DIBERI BATASAN MAKSIMAL & PADDING */}
-      <section id="home" className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-16 relative z-10 w-full pt-16 md:pt-24 lg:pt-28 pb-20">
+      {/* HERO SECTION */}
+      <section id="home" className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-16 relative z-10 w-full pt-16 md:pt-24 lg:pt-32 pb-20">
         
         {/* Kolom Kiri: Teks & Tombol */}
-        <div className="flex-1 flex flex-col gap-6 lg:pr-10 z-20">
+        <div className="flex-1 flex flex-col gap-8 lg:pr-10 z-20">
           <div>
-            <p className="flex items-center gap-3 text-brand-green font-mono text-sm mb-4 tracking-widest uppercase">
-              <span className="w-8 h-px bg-brand-green"></span>
-              HI, I AM HARTONO ADJI S.
-            </p>
-            <h1 className="text-5xl md:text-6xl lg:text-[5rem] font-extrabold leading-[1.05] tracking-tighter mb-8">
-              Architecting <br />
+            {/* Main Headline - Raksasa & Bersih ala HPE */}
+            <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold leading-[1.05] tracking-tighter mb-8">
+              Hello, I'm <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-green">
-                AI-Assisted Cloud
-              </span> <br />
-              Infrastructure.
+                Hartono Adji Susanto.
+              </span>
             </h1>
             
-            {/* DESKRIPSI DIRAMPINGKAN & DIBUAT LEBIH ELEGAN */}
-            <p className="text-gray-400 max-w-xl leading-relaxed text-lg font-light">
-              Data Science student bridging the gap between intelligent analytics and scalable infrastructure. 
-              Specializing in full-cycle deployment and enterprise-grade network provisioning.
+            {/* Slogan Keywords - Dipisahkan dengan titik agar terlihat teknis dan profesional */}
+            <p className="text-gray-400 max-w-2xl leading-relaxed text-xl md:text-2xl font-light tracking-wide flex flex-wrap gap-x-3 gap-y-2 items-center">
+              <span>Architecting</span>
+              <span className="text-brand-blue/50">•</span>
+              <span>AI-Assisted</span>
+              <span className="text-brand-blue/50">•</span>
+              <span>Cloud Infrastructure</span>
+              <span className="text-brand-blue/50">•</span>
+              <span>Network Engineering</span>
             </p>
-            
-            {/* DAFTAR TEKNOLOGI DIPISAH MENJADI BULLET POINTS */}
-            <ul className="mt-6 space-y-2 text-sm text-gray-500 font-mono tracking-wide">
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-brand-blue"></span>
-                <span>Web Stack: Next.js, Tailwind, Turso, Supabase</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-brand-green"></span>
-                <span>Cloud & Networking: Azure, GCP, Docker, Mikrotik, Cisco</span>
-              </li>
-            </ul>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-6 mt-8 items-start sm:items-center">
-            {/* TOMBOL DENGAN SUDUT TAJAM (Menghapus rounded-xl) */}
+          <div className="flex flex-col sm:flex-row gap-6 mt-4 items-start sm:items-center">
+            {/* TOMBOL DENGAN SUDUT TAJAM */}
             <button className="flex items-center gap-3 bg-white text-black px-8 py-4 font-bold hover:bg-brand-blue hover:text-white transition-all shadow-[4px_4px_0px_rgba(59,130,246,0.3)] hover:shadow-none hover:translate-x-1 hover:translate-y-1">
               <span>EXPLORE MY WORK</span> <ArrowRight size={18} />
             </button>
@@ -73,7 +62,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Kolom Kanan: Foto Profil (Tetap Sama, hanya penyesuaian margin atas) */}
+        {/* Kolom Kanan: Foto Profil */}
         <div className="flex-1 flex justify-center items-center relative min-h-[450px] w-full mt-12 lg:mt-0">
           <OrnamentZigzag className="absolute top-0 left-10 text-gray-400 -rotate-12 animate-pulse" />
           <OrnamentCircle className="absolute top-10 right-0 text-gray-500 opacity-50" />
@@ -83,7 +72,7 @@ export default function Home() {
           <div className="absolute w-[400px] h-[400px] bg-brand-blue/10 blur-[120px] rounded-full"></div>
           
           <div className="relative w-72 h-80 md:w-[350px] md:h-[450px]">
-            {/* Border kotak tajam (menghapus rounded) */}
+            {/* Border kotak tajam */}
             <div className="absolute inset-0 bg-gradient-to-br from-brand-blue to-brand-green opacity-20 -rotate-6 md:-rotate-6 transform origin-center"></div>
             <div className="absolute inset-0 border border-white/20 rotate-3 md:rotate-3 transform origin-center"></div>
 
