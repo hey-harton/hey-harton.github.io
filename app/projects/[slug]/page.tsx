@@ -5,6 +5,16 @@ import OverviewSection from "@/components/sections/projects-page/slug/OverviewSe
 import FlowchartSection from "@/components/sections/projects-page/slug/FlowchartSection";
 import GallerySection from "@/components/sections/projects-page/slug/GallerySection";
 
+export async function generateStaticParams() {
+  return [
+    { slug: "medical-dashboard" },
+    { slug: "datasea-portal" },
+    { slug: "truenews" },
+    { slug: "interactive-story" },
+    { slug: "network-topology" },
+  ];
+}
+
 export default async function ProjectDetail({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
   const slug = resolvedParams?.slug || "";
