@@ -1,26 +1,59 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Palet Warna Utama */
+  --color-brand-blue: #3b82f6;
+  --color-brand-green: #10b981;
+  --color-dark-base: #050505;
+  --color-dark-surface: #121212;
+
+  /* Radius untuk efek modern */
+  --radius-xl: 1.5rem;
+
+  /* --- ANIMASI KUSTOM --- */
+  --animate-grid-flow: grid-flow 20s linear infinite;
+  
+  /* Animasi Logo HTN Ala Enterprise */
+  --animate-logo-block: logo-block 2.5s cubic-bezier(0.87, 0, 0.13, 1) forwards;
+  --animate-logo-text: logo-text 2.5s cubic-bezier(0.87, 0, 0.13, 1) forwards;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* --- KEYFRAMES --- */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Logika pergerakan background dari atas ke bawah */
+@keyframes grid-flow {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 32px; 
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Animasi Balok Geometris (Muncul memanjang lalu menyusut ke tengah) */
+@keyframes logo-block {
+  0% { transform: scaleX(0); opacity: 1; }
+  20% { transform: scaleX(1); opacity: 1; }
+  40% { transform: scaleX(0.15); opacity: 1; }
+  50% { transform: scaleX(0); opacity: 0; }
+  100% { transform: scaleX(0); opacity: 0; }
+}
+
+/* Animasi Teks Merakit (Melesat keluar dari tengah, dari blur menjadi tajam) */
+@keyframes logo-text {
+  0% { opacity: 0; transform: scale(0.8); letter-spacing: -8px; filter: blur(8px); }
+  40% { opacity: 0; transform: scale(0.8); letter-spacing: -8px; filter: blur(8px); }
+  60% { opacity: 1; transform: scale(1.1); letter-spacing: 2px; filter: blur(0px); }
+  75% { opacity: 1; transform: scale(1); letter-spacing: 0px; filter: blur(0px); }
+  100% { opacity: 1; transform: scale(1); letter-spacing: 0px; filter: blur(0px); }
+}
+
+:root {
+  background-color: var(--color-dark-base);
+  color: #ffffff;
+}
+
+/* Memastikan transisi halus untuk seluruh interaksi */
+* {
+  @apply transition-colors duration-300;
 }
