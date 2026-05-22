@@ -6,6 +6,12 @@ export const getProjectDetails = (slug: string) => {
       overview: "A comprehensive clinical data dashboard focused on precision biometry analytics.",
       flowchartImage: "https://picsum.photos/seed/medflow/1200/600",
       technologies: ["Next.js 16", "Tailwind 4", "Data Analytics"],
+      features: [
+        "Real-time biometry data visualization",
+        "Precision analytics using ML models",
+        "Secure clinical data management",
+        "Interactive monitoring dashboard"
+      ],
       gallery: [
         "https://picsum.photos/seed/med1/1200/800",
         "https://picsum.photos/seed/med2/1200/800",
@@ -15,7 +21,7 @@ export const getProjectDetails = (slug: string) => {
       githubUrl: "#",
       role: "Lead Full-Stack Developer",
       year: "2026",
-      status: "Finish", // <-- DIUBAH MENJADI Finish
+      status: "Finish",
       updates: [
         { date: "May 15, 2026", version: "v1.1.0", description: "Integrated precision biometry analytics modules." },
         { date: "April 10, 2026", version: "v1.0.0", description: "Initial clinical data dashboard deployment." }
@@ -27,6 +33,12 @@ export const getProjectDetails = (slug: string) => {
       overview: "Centralized organizational file repository and portal for the Datasea academic community.",
       flowchartImage: "https://picsum.photos/seed/dataflow/1200/600",
       technologies: ["Next.js", "Turso DB", "Google Drive API"],
+      features: [
+        "Automated Google Drive file synchronization",
+        "Low-latency data fetching with Turso DB",
+        "Centralized academic archive structure",
+        "Responsive organizational portal UI"
+      ],
       gallery: [
         "https://picsum.photos/seed/data1/1200/800",
         "https://picsum.photos/seed/data2/1200/800"
@@ -35,7 +47,7 @@ export const getProjectDetails = (slug: string) => {
       githubUrl: "#",
       role: "Lead Engineer",
       year: "2026",
-      status: "Progress", // <-- DIUBAH MENJADI Progress
+      status: "Progress",
       updates: [
         { date: "May 20, 2026", version: "v0.9.5", description: "Optimized Google Drive API real-time file synchronization." },
         { date: "April 05, 2026", version: "v0.8.0", description: "Backend migration to Turso DB for centralized archive structures." },
@@ -48,6 +60,12 @@ export const getProjectDetails = (slug: string) => {
       overview: "An intelligent fact-checking application utilizing advanced machine learning models.",
       flowchartImage: "https://picsum.photos/seed/trueflow/1200/600",
       technologies: ["Flask", "XGBoost", "Azure App Service", "Llama-3"],
+      features: [
+        "Automated claim verification pipeline",
+        "Advanced NLP using Llama-3",
+        "High-accuracy classification via XGBoost",
+        "Cloud-native deployment on Azure"
+      ],
       gallery: [
         "https://picsum.photos/seed/true1/1200/800",
         "https://picsum.photos/seed/true2/1200/800"
@@ -68,6 +86,12 @@ export const getProjectDetails = (slug: string) => {
       overview: "A digital storytelling web experience featuring dynamic narrative progression.",
       flowchartImage: "https://picsum.photos/seed/storyflow/1200/600",
       technologies: ["JavaScript", "CSS3", "Digital Storytelling"],
+      features: [
+        "Dynamic narrative progression engine",
+        "Hardware-accelerated CSS3 animations",
+        "State-driven interactive UI",
+        "Optimized asset loading"
+      ],
       gallery: [
         "https://picsum.photos/seed/story1/1200/800",
         "https://picsum.photos/seed/story2/1200/800",
@@ -77,7 +101,7 @@ export const getProjectDetails = (slug: string) => {
       githubUrl: "#",
       role: "Frontend Developer",
       year: "2025",
-      status: "Idle", // <-- CONTOH STATUS Idle
+      status: "Idle",
       updates: [
         { date: "February 14, 2026", version: "v1.0.0", description: "Valentine's Day release with dynamic narrative progression." },
         { date: "January 20, 2026", version: "v0.8.0", description: "Finalized core narrative engine and CSS custom animations." }
@@ -89,6 +113,12 @@ export const getProjectDetails = (slug: string) => {
       overview: "Automated provisioning script for multi-router lab environments.",
       flowchartImage: "https://picsum.photos/seed/netflow/1200/600",
       technologies: ["Python", "Cisco IOS", "MikroTik"],
+      features: [
+        "Automated multi-router provisioning",
+        "Cross-vendor compatibility (Cisco/MikroTik)",
+        "Scripted lab environment setup",
+        "Network state validation"
+      ],
       gallery: [
         "https://picsum.photos/seed/net1/1200/800",
         "https://picsum.photos/seed/net2/1200/800"
@@ -111,6 +141,7 @@ export const getProjectDetails = (slug: string) => {
     overview: "Data detail untuk proyek ini belum tersedia.",
     flowchartImage: "https://picsum.photos/seed/errorflow/1200/600",
     technologies: [], 
+    features: [],
     gallery: [],      
     liveUrl: "#", 
     githubUrl: "#",

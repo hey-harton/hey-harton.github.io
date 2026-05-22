@@ -22,8 +22,8 @@ export default function Navbar() {
         <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 gap-6 lg:gap-8 text-sm font-medium text-gray-300 w-max">
           <Link href="/experience" className="hover:text-brand-blue transition-colors">Experience</Link>
           <Link href="/projects" className="hover:text-brand-blue transition-colors">Projects</Link>
-          <Link href="#datasets" className="hover:text-brand-blue transition-colors">Datasets</Link>
-          <Link href="#certifications" className="hover:text-brand-blue transition-colors">Certifications</Link>
+          <Link href="/datasets" className="hover:text-brand-blue transition-colors">Datasets</Link>
+          <Link href="/certifications" className="hover:text-brand-blue transition-colors">Certifications</Link>
         </div>
 
         {/* C. Tombol Contact & Toggle Mobile (Kanan) */}
@@ -53,8 +53,8 @@ export default function Navbar() {
               <Link href="/" onClick={() => setIsOpen(false)} className="hover:text-brand-blue transition-colors">Home</Link>
               <Link href="/experience" onClick={() => setIsOpen(false)} className="hover:text-brand-blue transition-colors">Experience</Link>
               <Link href="/projects" onClick={() => setIsOpen(false)} className="hover:text-brand-blue transition-colors">Projects</Link>
-              <Link href="#datasets" onClick={() => setIsOpen(false)} className="hover:text-brand-blue transition-colors">Datasets</Link>
-              <Link href="#certifications" onClick={() => setIsOpen(false)} className="hover:text-brand-blue transition-colors">Certifications</Link>
+              <Link href="/datasets" onClick={() => setIsOpen(false)} className="hover:text-brand-blue transition-colors">Datasets</Link>
+              <Link href="/certifications" onClick={() => setIsOpen(false)} className="hover:text-brand-blue transition-colors">Certifications</Link>
             </div>
             <button className="w-full bg-gradient-to-r from-brand-blue to-brand-green px-6 py-4 font-bold text-sm text-white mt-4 hover:opacity-90 transition-opacity">
               Contact Me

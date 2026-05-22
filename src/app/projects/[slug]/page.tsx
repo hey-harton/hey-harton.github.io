@@ -44,6 +44,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
 
       <OverviewSection 
         overview={project.overview} 
+        features={project.features}
         technologies={project.technologies} 
       />
 
