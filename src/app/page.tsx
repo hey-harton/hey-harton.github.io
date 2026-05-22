@@ -14,48 +14,46 @@ const OrnamentTriangle = ({ className }: { className?: string }) => ( <svg width
 
 export default function Home() {
   return (
-    <main className="w-full flex-1 flex flex-col min-h-[calc(100vh-80px)] relative overflow-hidden">
+    // bg-[#050505] DIHAPUS DARI SINI AGAR GRID MUNCUL KEMBALI
+    <main className="w-full flex-1 flex flex-col min-h-[calc(100vh-80px)] relative overflow-x-hidden">
       
       {/* HERO SECTION */}
-      <section id="home" className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-16 relative z-10 w-full pt-16 md:pt-24 lg:pt-32 pb-20">
+      <section id="home" className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 flex flex-col-reverse lg:flex-row items-center justify-between gap-10 md:gap-12 lg:gap-16 relative z-10 w-full pt-12 sm:pt-16 md:pt-24 lg:pt-32 pb-20">
         
         {/* Kolom Kiri: Teks & Tombol */}
-        <div className="flex-1 flex flex-col gap-8 lg:pr-10 z-20">
+        <div className="flex-1 flex flex-col gap-6 md:gap-8 lg:pr-10 z-20">
           <div>
-            {/* Main Headline - Raksasa & Bersih ala HPE */}
-            <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold leading-[1.05] tracking-tighter mb-8">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold leading-[1.1] md:leading-[1.05] tracking-tighter mb-6 md:mb-8">
               Hello, I'm <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-green">
                 Hartono Adji Susanto.
               </span>
             </h1>
             
-            {/* Slogan Keywords - Dipisahkan dengan titik agar terlihat teknis dan profesional */}
-            <p className="text-gray-400 max-w-2xl leading-relaxed text-xl md:text-2xl font-light tracking-wide flex flex-wrap gap-x-3 gap-y-2 items-center">
+            <p className="text-gray-400 max-w-2xl leading-relaxed text-lg sm:text-xl md:text-2xl font-light tracking-wide flex flex-wrap gap-x-2 sm:gap-x-3 gap-y-1 sm:gap-y-2 items-center">
               <span>Architecting</span>
-              <span className="text-brand-blue/50">•</span>
+              <span className="text-brand-blue/50 hidden sm:inline">•</span>
               <span>AI-Assisted</span>
-              <span className="text-brand-blue/50">•</span>
+              <span className="text-brand-blue/50 hidden sm:inline">•</span>
               <span>Cloud Infrastructure</span>
-              <span className="text-brand-blue/50">•</span>
+              <span className="text-brand-blue/50 hidden sm:inline">•</span>
               <span>Network Engineering</span>
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-6 mt-4 items-start sm:items-center">
-            {/* TOMBOL DENGAN SUDUT TAJAM */}
-            <button className="flex items-center gap-3 bg-white text-black px-8 py-4 font-bold hover:bg-brand-blue hover:text-white transition-all shadow-[4px_4px_0px_rgba(59,130,246,0.3)] hover:shadow-none hover:translate-x-1 hover:translate-y-1">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-2 md:mt-4 items-start sm:items-center">
+            <button className="flex items-center justify-center gap-3 w-full sm:w-auto bg-white text-black px-8 py-4 font-bold hover:bg-brand-blue hover:text-white transition-colors duration-200 shadow-[4px_4px_0px_rgba(59,130,246,0.3)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 will-change-transform">
               <span>EXPLORE MY WORK</span> <ArrowRight size={18} />
             </button>
             
-            <div className="flex gap-4">
-              <a href="#" aria-label="GitHub" className="p-4 bg-transparent border border-white/10 hover:border-brand-blue hover:text-brand-blue transition-all">
+            <div className="flex gap-4 w-full sm:w-auto justify-center sm:justify-start">
+              <a href="#" aria-label="GitHub" className="p-4 bg-transparent border border-white/10 hover:border-brand-blue hover:text-brand-blue transition-colors duration-200">
                 <GithubIcon />
               </a>
-              <a href="#" aria-label="LinkedIn" className="p-4 bg-transparent border border-white/10 hover:border-brand-blue hover:text-brand-blue transition-all">
+              <a href="#" aria-label="LinkedIn" className="p-4 bg-transparent border border-white/10 hover:border-brand-blue hover:text-brand-blue transition-colors duration-200">
                 <LinkedinIcon />
               </a>
-              <a href="#" aria-label="Behance" className="p-4 bg-transparent border border-white/10 hover:border-brand-blue hover:text-brand-blue transition-all">
+              <a href="#" aria-label="Behance" className="p-4 bg-transparent border border-white/10 hover:border-brand-blue hover:text-brand-blue transition-colors duration-200">
                 <BehanceIcon />
               </a>
             </div>
@@ -63,16 +61,16 @@ export default function Home() {
         </div>
 
         {/* Kolom Kanan: Foto Profil */}
-        <div className="flex-1 flex justify-center items-center relative min-h-[450px] w-full mt-12 lg:mt-0">
-          <OrnamentZigzag className="absolute top-0 left-10 text-gray-400 -rotate-12 animate-pulse" />
+        <div className="flex-1 flex justify-center items-center relative min-h-[350px] md:min-h-[450px] w-full mt-8 md:mt-0">
+          <OrnamentZigzag className="absolute top-0 left-4 md:left-10 text-gray-400 -rotate-12 md:animate-pulse" />
           <OrnamentCircle className="absolute top-10 right-0 text-gray-500 opacity-50" />
-          <OrnamentCross className="absolute bottom-10 right-10 text-brand-green" />
+          <OrnamentCross className="absolute bottom-10 right-4 md:right-10 text-brand-green" />
           <OrnamentTriangle className="absolute bottom-20 left-0 text-brand-blue opacity-70 rotate-12" />
 
-          <div className="absolute w-[400px] h-[400px] bg-brand-blue/10 blur-[120px] rounded-full"></div>
+          {/* BACKGROUND GLOW MEMAKAI RADIAL GRADIENT (ANTI LAG) */}
+          <div className="absolute w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-[radial-gradient(circle,rgba(59,130,246,0.15)_0%,transparent_60%)] rounded-full pointer-events-none will-change-transform"></div>
           
-          <div className="relative w-72 h-80 md:w-[350px] md:h-[450px]">
-            {/* Border kotak tajam */}
+          <div className="relative w-[260px] h-[300px] sm:w-72 sm:h-80 md:w-[350px] md:h-[450px] will-change-transform">
             <div className="absolute inset-0 bg-gradient-to-br from-brand-blue to-brand-green opacity-20 -rotate-6 md:-rotate-6 transform origin-center"></div>
             <div className="absolute inset-0 border border-white/20 rotate-3 md:rotate-3 transform origin-center"></div>
 
@@ -82,7 +80,8 @@ export default function Home() {
                  alt="Hartono Adji Susanto" 
                  fill 
                  priority
-                 className="object-cover object-bottom grayscale hover:grayscale-0 transition-all duration-700" 
+                 sizes="(max-width: 768px) 260px, 350px"
+                 className="object-cover object-bottom grayscale hover:grayscale-0 md:transition-all md:duration-500" 
                />
             </div>
           </div>

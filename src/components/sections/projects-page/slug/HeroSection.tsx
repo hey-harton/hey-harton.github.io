@@ -13,9 +13,19 @@ interface HeroSectionProps {
   year: string;
   liveUrl?: string;
   githubUrl?: string;
+  status: string; 
 }
 
-export default function HeroSection({ title, role, year, liveUrl, githubUrl }: HeroSectionProps) {
+export default function HeroSection({ title, role, year, liveUrl, githubUrl, status }: HeroSectionProps) {
+  
+  // LOGIKA WARNA BARU SESUAI PERMINTAAN: Finish, Progress, Idle
+  const currentStatus = status || "Idle"; // Fallback jika kosong
+  
+  const statusColor = 
+    currentStatus === "Finish" ? "bg-brand-green shadow-[0_0_10px_#10b981]" : 
+    currentStatus === "Progress" ? "bg-yellow-400 shadow-[0_0_10px_#facc15]" : 
+    "bg-gray-500 shadow-[0_0_10px_#6b7280]";
+
   return (
     <section className="w-full px-4 md:px-12 lg:px-16 max-w-[1600px] mx-auto mb-16">
       <Link href="/projects" className="inline-flex items-center gap-2 text-sm font-semibold text-brand-blue hover:text-white transition-colors mb-8 lg:mb-12 uppercase tracking-widest">
@@ -37,21 +47,42 @@ export default function HeroSection({ title, role, year, liveUrl, githubUrl }: H
               <span className="block text-gray-700 mb-1">Year</span>
               <span className="text-gray-300">{year}</span>
             </div>
+            
+            {/* INDIKATOR STATUS */}
+            <div>
+              <span className="block text-gray-700 mb-1">Status</span>
+              <div className="flex items-center gap-2 h-5">
+                {/* Animasi pulse dimatikan jika statusnya Idle agar terkesan benar-benar diam */}
+                <div className={`w-2 h-2 rounded-full ${statusColor} ${currentStatus === "Idle" ? "" : "animate-pulse"}`}></div>
+                <span className="text-white font-bold">{currentStatus}</span>
+              </div>
+            </div>
           </div>
         </div>
 
         <div className="lg:col-span-4 flex flex-col gap-4 pb-2">
-          {liveUrl && liveUrl !== "#" && (
+          {liveUrl && liveUrl !== "#" ? (
             <a href={liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between w-full bg-white text-black px-8 py-4 font-bold hover:bg-brand-blue hover:text-white transition-colors">
               <span>View Live Platform</span>
               <ExternalLink size={20} />
             </a>
+          ) : (
+            <div className="flex items-center justify-between w-full bg-white/5 text-gray-500 px-8 py-4 font-bold cursor-not-allowed border border-white/5">
+              <span>Platform Unavailable</span>
+              <ExternalLink size={20} className="opacity-50" />
+            </div>
           )}
-          {githubUrl && githubUrl !== "#" && (
+
+          {githubUrl && githubUrl !== "#" ? (
             <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between w-full bg-transparent border border-white/20 text-white px-8 py-4 font-bold hover:border-white transition-colors">
               <span>Repository</span>
               <GithubIcon className="w-5 h-5" />
             </a>
+          ) : (
+            <div className="flex items-center justify-between w-full bg-transparent border border-white/5 text-gray-600 px-8 py-4 font-bold cursor-not-allowed">
+              <span>Private Repository</span>
+              <GithubIcon className="w-5 h-5 opacity-50" />
+            </div>
           )}
         </div>
       </div>

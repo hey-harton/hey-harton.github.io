@@ -4,6 +4,7 @@ import CoverSection from "@/components/sections/projects-page/slug/CoverSection"
 import OverviewSection from "@/components/sections/projects-page/slug/OverviewSection";
 import FlowchartSection from "@/components/sections/projects-page/slug/FlowchartSection";
 import GallerySection from "@/components/sections/projects-page/slug/GallerySection";
+import UpdateHistorySection from "@/components/sections/projects-page/slug/UpdateHistorySection"; 
 
 export async function generateStaticParams() {
   return [
@@ -24,8 +25,8 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
   return (
     <main className="w-full min-h-screen pt-20 lg:pt-24 pb-20 relative">
       
-      {/* Background Glow */}
-      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-brand-blue/10 blur-[150px] rounded-full pointer-events-none -z-10"></div>
+      {/* Background Glow (Dioptimalkan anti-lag untuk Mobile) */}
+      <div className="absolute top-0 left-1/4 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-[radial-gradient(circle,rgba(59,130,246,0.15)_0%,transparent_60%)] rounded-full pointer-events-none -z-10 will-change-transform"></div>
       
       <HeroSection 
         title={project.title}
@@ -33,6 +34,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
         year={project.year}
         liveUrl={project.liveUrl}
         githubUrl={project.githubUrl}
+        status={project.status} 
       />
 
       <CoverSection 
@@ -51,6 +53,10 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
 
       <GallerySection 
         gallery={project.gallery} 
+      />
+
+      <UpdateHistorySection 
+        updates={project.updates}
       />
 
     </main>
