@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react"; 
-import AnimatedLogo from "@/components/ui/AnimatedLogo"; // <-- 1. Import komponen logo animasi
+import AnimatedLogo from "@/components/ui/AnimatedLogo";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,10 +28,13 @@ export default function Navbar() {
 
         {/* C. Tombol Contact & Toggle Mobile (Kanan) */}
         <div className="flex items-center gap-4 z-10">
-          {/* Tombol ujung tajam (rounded-full dihapus) ala Enterprise */}
-          <button className="hidden md:block bg-gradient-to-r from-brand-blue to-brand-green px-6 py-2 font-bold text-sm text-white hover:opacity-90 transition-transform hover:scale-105">
+          {/* Tombol Desktop Diubah Menjadi Link */}
+          <Link 
+            href="/contacts"
+            className="hidden md:flex items-center justify-center bg-gradient-to-r from-brand-blue to-brand-green px-6 py-2 font-bold text-sm text-white hover:opacity-90 transition-transform hover:scale-105"
+          >
             Contact Me
-          </button>
+          </Link>
 
           {/* Tombol Hamburger Mobile */}
           <button 
@@ -56,9 +59,14 @@ export default function Navbar() {
               <Link href="/datasets" onClick={() => setIsOpen(false)} className="hover:text-brand-blue transition-colors">Datasets</Link>
               <Link href="/certifications" onClick={() => setIsOpen(false)} className="hover:text-brand-blue transition-colors">Certifications</Link>
             </div>
-            <button className="w-full bg-gradient-to-r from-brand-blue to-brand-green px-6 py-4 font-bold text-sm text-white mt-4 hover:opacity-90 transition-opacity">
+            {/* Tombol Mobile Diubah Menjadi Link */}
+            <Link 
+              href="/contacts"
+              onClick={() => setIsOpen(false)}
+              className="flex items-center justify-center w-full bg-gradient-to-r from-brand-blue to-brand-green px-6 py-4 font-bold text-sm text-white mt-4 hover:opacity-90 transition-opacity"
+            >
               Contact Me
-            </button>
+            </Link>
           </div>
         </div>
       )}
