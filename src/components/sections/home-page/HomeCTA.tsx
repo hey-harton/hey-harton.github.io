@@ -28,7 +28,7 @@ export default function HomeCTASection() {
 
             {/* Tombol Khas IBM Carbon: Teks Kiri, Ikon Kanan, Kotak Tajam */}
             <Link 
-              href="/contact" 
+              href="/contacts" 
               className="group flex items-center justify-between bg-brand-blue text-white p-5 font-semibold hover:bg-blue-600 transition-colors w-full sm:w-[300px] border border-transparent hover:border-white/20"
             >
               <span className="tracking-wide">Get in touch</span>

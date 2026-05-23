@@ -1,22 +1,24 @@
 export default function HeroSection() {
   return (
-    <section className="relative w-full px-4 md:px-12 lg:px-16 max-w-[1400px] mx-auto pt-32 lg:pt-40 pb-20 border-b border-white/5">
-      <div className="max-w-5xl">
-        <h1 className="text-sm font-mono text-brand-blue uppercase tracking-[0.3em] mb-8">
-          About HTN
-        </h1>
-        
-        {/* Tipografi Raksasa ala Ciena */}
-        <h2 className="text-5xl md:text-7xl lg:text-[6rem] font-extrabold tracking-tighter leading-[1.05] text-white mb-10">
-          Architecting the <br className="hidden md:block" />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-green">
-            Intelligence Edge.
+    // bg-[#050505] dihapus
+    <section className="w-full border-b border-white/10">
+      <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 pt-32 lg:pt-40 pb-20 transform-gpu">
+        <div className="max-w-5xl">
+          <span className="text-sm font-mono text-brand-blue uppercase tracking-[0.3em] block mb-6">
+            Profil Eksekutif
           </span>
-        </h2>
-        
-        <p className="text-xl md:text-3xl text-gray-400 font-light leading-relaxed max-w-4xl">
-          We don't just build systems. We design resilient network infrastructures and power them with precision data analytics to solve complex challenges.
-        </p>
+          
+          <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-light text-white tracking-tighter leading-[1.05] mb-10">
+            Merancang konektivitas. <br />
+            <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-green">
+              Meningkatkan skala cloud.
+            </span>
+          </h1>
+          
+          <p className="text-xl md:text-2xl text-gray-400 font-light leading-relaxed max-w-4xl">
+            Didorong oleh ketahanan jaringan, dirancang untuk skalabilitas cloud, dan diperkuat oleh kecerdasan data. Temukan filosofi teknis dari Hartono Adji Susanto.
+          </p>
+        </div>
       </div>
     </section>
   );
