@@ -13,7 +13,7 @@ export default function AnimatedLogo() {
       {/* 2. Teks HTN yang merakit dari dalam keluar */}
       <div className="flex items-center animate-logo-text opacity-0">
         <span className="text-brand-blue">H</span>
-        <span className="text-brand-green">TN</span>
+        <span className="text-brand-green">AS</span>
       </div>
     </Link>
   );
