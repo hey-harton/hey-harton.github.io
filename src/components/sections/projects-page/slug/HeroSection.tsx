@@ -19,7 +19,7 @@ interface HeroSectionProps {
 export default function HeroSection({ title, role, year, liveUrl, githubUrl, status }: HeroSectionProps) {
   
   // LOGIKA WARNA BARU SESUAI PERMINTAAN: Finish, Progress, Idle
-  const currentStatus = status || "Idle"; // Fallback jika kosong
+  const currentStatus = status || "Idle"; 
   
   const statusColor = 
     currentStatus === "Finish" ? "bg-brand-green shadow-[0_0_10px_#10b981]" : 
