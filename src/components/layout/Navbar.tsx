@@ -9,12 +9,14 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    // 1. KUNCI PERBAIKAN: Navbar diubah menjadi fixed agar melayang dan mengikuti scroll
-    <nav className="fixed top-0 left-0 right-0 w-full border-b border-white/10 bg-[#0a0a0e]/80 backdrop-blur-md z-[100] transform-gpu">
+    // KUNCI PERBAIKAN PERFORMA: 
+    // - Menghapus `transform-gpu` agar tidak membebani GPU HP saat scroll.
+    // - Memakai background solid hitam (#050505) di mobile, blur transparan hanya di md (tablet/laptop).
+    <nav className="fixed top-0 left-0 right-0 w-full border-b border-white/10 bg-[#050505] md:bg-[#0a0a0e]/80 md:backdrop-blur-md z-[100]">
       
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 py-4 flex justify-between items-center w-full relative">
         
-        {/* A. Logo Animasi */}
+        {/* A. Logo Animasi (Dipanggil mandiri sesuai kodemu) */}
         <AnimatedLogo />
 
         {/* B. Menu Navigasi Desktop bergaya IBM Carbon (Monospace, Uppercase) */}
@@ -46,9 +48,10 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* 3. Dropdown Menu Mobile bergaya Konsol Terstruktur */}
+      {/* D. Dropdown Menu Mobile bergaya Konsol Terstruktur */}
+      {/* PERBAIKAN: Menghapus backdrop-blur-xl dan menggunakan background solid #050505 agar ringan di HP */}
       {isOpen && (
-        <div className="absolute top-full left-0 w-full bg-[#050505]/95 backdrop-blur-xl border-b border-white/10 shadow-2xl md:hidden z-50">
+        <div className="absolute top-full left-0 w-full bg-[#050505] border-b border-white/10 shadow-2xl md:hidden z-50">
           <div className="max-w-[1600px] mx-auto px-6 md:px-12 py-8 flex flex-col gap-6">
             <div className="flex flex-col gap-4 text-left font-mono text-xs tracking-widest uppercase text-gray-400">
               <Link href="/" onClick={() => setIsOpen(false)} className="hover:text-white hover:pl-2 transition-all border-b border-white/5 pb-3">&gt; Beranda</Link>

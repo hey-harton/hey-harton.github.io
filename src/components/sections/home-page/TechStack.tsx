@@ -36,31 +36,32 @@ export default function TechStackSection() {
   ];
 
   return (
-    <section className="relative w-full border-t border-white/10 bg-[#0a0a0e] overflow-hidden transform-gpu">
+    // PERBAIKAN: bg-[#0a0a0e] diubah menjadi bg-transparent agar grid global menembus ke dalam
+    <section className="relative w-full border-t border-white/10 bg-transparent overflow-hidden">
       
-      {/* Latar Belakang Grid Teknis */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:linear-gradient(to_bottom,white,transparent)] pointer-events-none opacity-60"></div>
+      {/* Grid lokal dihapus agar tidak bertumpuk */}
 
-      <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 py-24 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      {/* Padding disesuaikan agar tidak terlalu renggang di HP (py-16 md:py-24) */}
+      <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 py-16 md:py-24 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-12">
           
           {/* Kolom Kiri: Header */}
           <div className="lg:col-span-4 flex flex-col gap-6 lg:pr-8 border-b lg:border-b-0 lg:border-r border-white/10 pb-8 lg:pb-0">
             <div>
-              <p className="text-brand-blue font-mono text-sm tracking-widest mb-3 uppercase">
+              <p className="text-brand-blue font-mono text-xs md:text-sm tracking-widest mb-3 uppercase">
                 &gt; INDEX_02: CORE_STACK
               </p>
-              <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
                 Kompetensi<br className="hidden lg:block" /> Inti<span className="text-brand-blue">.</span>
               </h2>
             </div>
-            <p className="text-gray-400 font-mono text-sm leading-relaxed text-justify">
+            <p className="text-gray-400 font-mono text-xs sm:text-sm leading-relaxed text-left">
               Teknologi fundamental yang menggerakkan infrastruktur tangguh, sistem skala cloud, dan analitik data presisi.
             </p>
           </div>
           
           {/* Kolom Kanan: Grid Teknologi */}
-          <div className="lg:col-span-8 relative mt-4 lg:mt-0">
+          <div className="lg:col-span-8 relative mt-2 lg:mt-0">
             
             {/* Crosshairs Pembungkus Utama */}
             <Crosshair className="absolute -top-[7px] -left-[7px] text-brand-blue z-20" />
@@ -71,25 +72,25 @@ export default function TechStackSection() {
             {/* Arsitektur Grid Garis Tipis (1px) */}
             <div className="bg-white/10 gap-[1px] grid grid-cols-1 sm:grid-cols-2 border border-white/10">
               {technologies.map((tech, i) => (
-                <div key={i} className="bg-[#050505] p-8 md:p-10 hover:bg-[#0c0c11] transition-colors group flex flex-col h-full relative overflow-hidden">
+                <div key={i} className="bg-[#050505] p-6 sm:p-8 md:p-10 hover:bg-[#0c0c11] transition-colors group flex flex-col h-full relative overflow-hidden">
                   
-                  {/* Efek Indikator Terminal di sisi kiri saat di-hover */}
-                  <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-brand-blue transform scale-y-0 group-hover:scale-y-100 transition-transform origin-top duration-300"></div>
+                  {/* Efek Indikator Terminal di sisi kiri saat di-hover (dioptimalkan tanpa transform-gpu) */}
+                  <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-brand-blue transform scale-y-0 group-hover:scale-y-100 transition-transform origin-top duration-300 ease-in-out"></div>
 
-                  <div className="flex justify-between items-start mb-10">
+                  <div className="flex justify-between items-start mb-8 md:mb-10">
                     <div className="text-gray-500 group-hover:text-brand-blue transition-colors duration-300">
                       {tech.icon}
                     </div>
                     {/* Status Sistem Tiruan */}
-                    <span className="text-[10px] font-mono text-gray-600 group-hover:text-brand-blue/70 uppercase tracking-widest border border-transparent group-hover:border-brand-blue/30 px-2 py-0.5 transition-colors">
+                    <span className="text-[9px] md:text-[10px] font-mono text-gray-600 group-hover:text-brand-blue/70 uppercase tracking-widest border border-transparent group-hover:border-brand-blue/30 px-2 py-0.5 transition-colors">
                       {tech.status}
                     </span>
                   </div>
                   
-                  <h4 className="text-xl font-bold text-white mb-4 tracking-tight uppercase">{tech.category}</h4>
+                  <h4 className="text-lg md:text-xl font-bold text-white mb-3 md:mb-4 tracking-tight uppercase">{tech.category}</h4>
                   
                   {/* Daftar Tools dengan font-mono agar terlihat seperti output log */}
-                  <p className="text-gray-400 font-mono text-xs leading-relaxed mt-auto uppercase tracking-widest opacity-80 group-hover:opacity-100 transition-opacity">
+                  <p className="text-gray-400 font-mono text-[10px] md:text-xs leading-relaxed mt-auto uppercase tracking-widest opacity-80 group-hover:opacity-100 transition-opacity">
                     {tech.tools}
                   </p>
                 </div>

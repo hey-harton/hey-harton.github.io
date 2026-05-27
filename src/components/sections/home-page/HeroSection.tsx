@@ -7,7 +7,7 @@ const GithubIcon = () => ( <svg width="18" height="18" viewBox="0 0 24 24" fill=
 const LinkedinIcon = () => ( <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg> );
 const InstagramIcon = () => ( <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg> );
 
-// Tanda Plus (Crosshair) khas titik kordinat arsitektur
+// Tanda Plus (Crosshair)
 const Crosshair = ({ className }: { className?: string }) => ( 
   <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" strokeWidth="1" className={className}>
     <path d="M7.5 0V15M0 7.5H15" />
@@ -16,87 +16,73 @@ const Crosshair = ({ className }: { className?: string }) => (
 
 export default function HeroSection() {
   return (
-    // PERBAIKAN: Tinggi minimum disesuaikan, di mobile sedikit lebih fleksibel agar tidak memotong konten.
-    <section id="home" className="relative w-full border-b border-white/10 bg-transparent overflow-hidden min-h-screen flex items-center pt-24 md:pt-28 pb-16 md:pb-0">
+    // PERBAIKAN: bg-[#050505] diubah menjadi bg-transparent agar grid global dari layout.tsx menembus
+    <section id="home" className="relative w-full border-b border-white/10 bg-transparent overflow-hidden min-h-screen flex items-center pt-28 md:pt-32 pb-16 md:pb-0">
       
-      {/* Latar Belakang Grid Teknis */}
-      <div className="absolute inset-0 pointer-events-none -z-10 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem] md:[mask-image:linear-gradient(to_bottom,white,transparent)] transform-gpu will-change-transform"></div>
+      {/* Grid lokal dihapus agar tidak bertumpuk */}
 
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 flex flex-col-reverse lg:flex-row items-center justify-between relative z-10 w-full gap-12 lg:gap-8">
         
         {/* Kolom Kiri: Teks & Konsol Logika */}
-        <div className="flex-1 flex flex-col justify-center w-full lg:pr-10 z-20 border-b lg:border-b-0 lg:border-r border-white/5 pb-10 lg:pb-0 pt-4 lg:pt-0">
+        <div className="flex-1 flex flex-col justify-center w-full lg:pr-10 border-t border-white/10 lg:border-t-0 pt-10 lg:pt-0">
           
-          {/* Indikator Status ala Terminal */}
           <div className="flex items-center gap-3 mb-6 md:mb-8">
-            <span className="w-2 h-2 bg-brand-blue animate-pulse"></span>
+            <span className="w-2 h-2 bg-brand-blue md:animate-pulse"></span>
             <span className="text-[10px] md:text-xs font-mono text-brand-blue uppercase tracking-widest">[ SYSTEM: ONLINE ]</span>
           </div>
 
           <div className="mb-10 md:mb-12">
-            {/* PERBAIKAN: Ukuran font judul diperkecil sedikit di mode HP (text-4xl) agar tidak tumpah */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] xl:text-[5.5rem] font-bold leading-[1.05] tracking-tight text-white mb-6 break-words">
+            {/* Teks dibatasi lebar maksimal dan break-words agar aman di HP */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] xl:text-[5.5rem] font-bold leading-[1.05] tracking-tight text-white mb-6 break-words max-w-[90vw] md:max-w-none">
               Hartono Adji Susanto<span className="text-brand-blue">.</span>
             </h1>
             
-            {/* Jabatan dengan font-mono dan pemisah tegas */}
             <div className="flex flex-col gap-2 border-l-2 border-brand-blue pl-4 mt-6">
-              <p className="text-gray-400 font-mono text-xs sm:text-sm md:text-base tracking-wide">
-                &gt; DATA ENGINEER
-              </p>
-              <p className="text-gray-400 font-mono text-xs sm:text-sm md:text-base tracking-wide">
-                &gt; NETWORK ENGINEER
-              </p>
-              <p className="text-gray-400 font-mono text-xs sm:text-sm md:text-base tracking-wide">
-                &gt; CLOUD ENGINEER
-              </p>
-              <p className="text-gray-400 font-mono text-xs sm:text-sm md:text-base tracking-wide">
-                &gt; ARCHITECTURE
-              </p>
+              <p className="text-gray-400 font-mono text-xs sm:text-sm md:text-base tracking-wide">&gt; DATA ENGINEER</p>
+              <p className="text-gray-400 font-mono text-xs sm:text-sm md:text-base tracking-wide">&gt; NETWORK ENGINEER</p>
+              <p className="text-gray-400 font-mono text-xs sm:text-sm md:text-base tracking-wide">&gt; CLOUD ENGINEER</p>
+              <p className="text-gray-400 font-mono text-xs sm:text-sm md:text-base tracking-wide">&gt; ARCHITECTURE</p>
             </div>
           </div>
 
-          {/* PERBAIKAN: Tata letak tombol aksi di HP dibuat tumpuk vertikal, di layar lebih besar berjajar horizontal */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-0 border border-transparent sm:border-white/10 w-full sm:w-max">
-            {/* Tombol Akses Profil */}
+          {/* Grup Tombol Akses (Menumpuk di Mobile, Berjajar di Desktop) */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center border border-white/10 w-full sm:w-max bg-[#050505]">
+            
             <Link 
               href="/about"
-              className="group flex items-center justify-center gap-4 bg-brand-blue text-white px-6 md:px-8 py-3 md:py-4 text-xs md:text-sm font-semibold tracking-widest hover:bg-[#0f52d6] transition-colors rounded-none sm:border-r border-transparent sm:border-white/10"
+              className="group flex items-center justify-center gap-4 bg-brand-blue text-white px-6 md:px-8 py-4 text-xs md:text-sm font-bold font-mono uppercase tracking-widest hover:bg-[#0f52d6] transition-colors rounded-none sm:border-r border-white/10"
             >
               <span>ACCESS PROFILE</span> 
-              <ArrowRight size={16} className="transform-gpu group-hover:translate-x-1 transition-transform" />
+              {/* PERBAIKAN: Hapus transform-gpu */}
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             
-            {/* Tombol Sosial Media */}
-            <div className="flex justify-center sm:justify-start bg-[#0a0a0e] border border-white/10 sm:border-none">
-              <a href="#" aria-label="GitHub" className="p-3 md:p-4 text-gray-400 hover:text-white hover:bg-white/5 transition-colors rounded-none flex-1 sm:flex-none flex justify-center border-r border-white/5 sm:border-r-0">
+            <div className="flex bg-[#0a0a0e]">
+              <a href="#" aria-label="GitHub" className="p-4 text-gray-400 hover:text-white hover:bg-white/5 transition-colors rounded-none flex-1 flex justify-center border-r border-white/10">
                 <GithubIcon />
               </a>
-              <a href="#" aria-label="LinkedIn" className="p-3 md:p-4 sm:border-l border-white/10 text-gray-400 hover:text-white hover:bg-white/5 transition-colors rounded-none flex-1 sm:flex-none flex justify-center border-r border-white/5 sm:border-r-0">
+              <a href="#" aria-label="LinkedIn" className="p-4 text-gray-400 hover:text-white hover:bg-white/5 transition-colors rounded-none flex-1 flex justify-center border-r border-white/10">
                 <LinkedinIcon />
               </a>
-              <a href="#" aria-label="Instagram" className="p-3 md:p-4 sm:border-l border-white/10 text-gray-400 hover:text-white hover:bg-white/5 transition-colors rounded-none flex-1 sm:flex-none flex justify-center">
+              <a href="#" aria-label="Instagram" className="p-4 text-gray-400 hover:text-white hover:bg-white/5 transition-colors rounded-none flex-1 flex justify-center">
                 <InstagramIcon />
               </a>
             </div>
+            
           </div>
-
         </div>
 
-        {/* Kolom Kanan: Foto Profil Rigid */}
-        {/* PERBAIKAN: Di mode HP lebar kotak foto diperkecil (w-3/4 atau w-full max-w-[320px]) agar proporsional */}
+        {/* Kolom Kanan: Foto Profil Blueprint */}
         <div className="flex-1 flex justify-center lg:justify-end items-center relative w-full pt-4 lg:pt-0">
           
-          <div className="relative w-full max-w-[280px] sm:max-w-[340px] xl:max-w-[450px] aspect-[4/5] border border-white/10 bg-white/[0.02] mt-4 lg:mt-0">
+          <div className="relative w-full max-w-[260px] sm:max-w-[340px] xl:max-w-[450px] aspect-[4/5] border border-white/10 bg-[#0a0a0e] mt-4 lg:mt-0">
             
-            {/* Crosshairs di setiap sudut atas */}
             <Crosshair className="absolute -top-[7px] -left-[7px] text-brand-blue" />
             <Crosshair className="absolute -top-[7px] -right-[7px] text-brand-blue" />
             <Crosshair className="absolute -bottom-[7px] -left-[7px] text-brand-blue" />
             <Crosshair className="absolute -bottom-[7px] -right-[7px] text-brand-blue" />
             
-            {/* Container Gambar */}
-            <div className="absolute inset-3 sm:inset-5 lg:inset-8 border border-white/10 bg-[#050505] overflow-hidden">
+            <div className="absolute inset-3 md:inset-5 lg:inset-8 border border-white/10 bg-[#050505] overflow-hidden">
                <Image 
                  src="/profil/photo.jpg" 
                  alt="Hartono Adji Susanto" 
@@ -107,7 +93,6 @@ export default function HeroSection() {
                />
             </div>
             
-            {/* Label Metadata di sudut bawah bingkai */}
             <div className="absolute bottom-2 right-4 lg:bottom-4 lg:right-8 bg-[#0a0a0e] border border-white/10 px-2 py-0.5 text-[8px] lg:text-[10px] font-mono text-gray-500 z-20">
               IMG_SRC: ROOT/PROFILE
             </div>

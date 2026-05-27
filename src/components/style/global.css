@@ -1,0 +1,72 @@
+/* ==========================================================================
+   FONDASI TAILWIND CSS v4 (Tanpa Carbon Import di Sini)
+   ========================================================================== */
+
+/* 1. IMPORT UTAMA TAILWIND v4 */
+@import "tailwindcss";
+
+/* 2. KONFIGURASI TEMA & VARIABEL WARNA DI TAILWIND v4 */
+@theme {
+  --color-brand-blue: #0f52d6;
+  --color-brand-green: #10b881;
+}
+
+/* 3. MODIFIKASI RESPONSIF & DNA PORTFOLIO (OVERRIDE CARBON) */
+
+/* Memaksa semua elemen Carbon mengikuti bahasa desain kaku arsitektur */
+.cds--text-input,
+.cds--text-area,
+.cds--btn,
+.cds--tile {
+  border-radius: 0px !important;
+  font-family: var(--font-mono), monospace !important;
+}
+
+/* Responsif Fokus: Di HP kita buat garis outline sedikit lebih tipis */
+.cds--text-input:focus,
+.cds--text-area:focus {
+  outline: 1.5px solid #10b881 !important;
+  box-shadow: none !important;
+}
+
+@media (min-width: 768px) {
+  .cds--text-input:focus,
+  .cds--text-area:focus {
+    outline: 2px solid #10b881 !important;
+  }
+}
+
+/* Menyelaraskan warna latar belakang Carbon dengan warna dasar hitam pekat */
+.cds--theme-g100 {
+  --cds-background: transparent !important;
+  --cds-layer-01: #050505 !important;   
+  --cds-field-01: #0a0a0e !important;   
+  --cds-text-01: #ffffff !important;    
+  --cds-text-02: #a8a8a8 !important;    
+}
+
+/* ==========================================================================
+   4. ANIMASI LOGO KUSTOM (HAS.)
+   ========================================================================== */
+
+/* Instruksi untuk balok warna yang memanjang lalu menghilang */
+@keyframes logo-block {
+  0% { transform: scaleX(0); opacity: 1; }
+  50% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(0); opacity: 0; }
+}
+
+/* Instruksi untuk teks yang menyembul dari bawah */
+@keyframes logo-text {
+  0%, 50% { opacity: 0; transform: translateY(5px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Mendaftarkan kelas utilitas untuk dipanggil di AnimatedLogo.tsx */
+.animate-logo-block {
+  animation: logo-block 1.5s cubic-bezier(0.75, 0, 0.25, 1) forwards;
+}
+
+.animate-logo-text {
+  animation: logo-text 1.5s cubic-bezier(0.75, 0, 0.25, 1) forwards;
+}

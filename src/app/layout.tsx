@@ -1,51 +1,56 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import Navbar from "@/components/layout/Navbar"; 
-import Footer from "@/components/layout/Footer";
-import ScrollToTop from "@/components/ui/ScrollToTop";
+import "@/components/style/global.css";
 
-const inter = Inter({ subsets: ["latin"] });
+// Import komponen Navbar dan Footer
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Portofolio | Data & Development",
-  description: "Personal portfolio showcasing data science, medical informatics, and web development projects.",
+  title: "Hartono Adji Susanto | Portfolio",
+  description: "Portofolio Profesional Enterprise Networking, Cloud Architecture, & Data Science.",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+  },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className="scroll-smooth overflow-x-hidden">
-      <head>
-        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-      </head>
-      <body className={`${inter.className} bg-[#0a0a0e] text-white antialiased flex flex-col min-h-screen relative overflow-x-hidden`}>
+    <html lang="id" className="scroll-smooth">
+      <body className="bg-[#050505] text-white min-h-screen overflow-x-hidden antialiased font-mono relative">
         
-        {/* === BACKGROUND DECORATIONS === */}
-        <div className="fixed inset-0 z-0 pointer-events-none will-change-transform">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:32px_32px] md:animate-grid-flow"></div>
-          <div className="absolute top-[-10%] left-[-10%] w-[300px] h-[300px] md:w-[600px] md:h-[600px] rounded-full bg-brand-blue/20 blur-[80px] md:blur-[150px] md:animate-pulse [animation-duration:6s]"></div>
-          <div className="absolute bottom-[-10%] right-[-10%] w-[300px] h-[300px] md:w-[600px] md:h-[600px] rounded-full bg-brand-green/20 blur-[80px] md:blur-[150px] md:animate-pulse [animation-duration:8s] [animation-delay:2s]"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#0a0a0e_100%)] opacity-80"></div>
+        {/* =========================================================
+            LATAR BELAKANG GRID GLOBAL (MENGURANGI MATA LELAH)
+            ========================================================= */}
+        <div className="fixed inset-0 pointer-events-none z-0">
+          {/* 1. Garis Grid: Opasitas putih dinaikkan menjadi 8% (0.08) agar lebih tegas */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+          
+          {/* 2. Cahaya Latar (Glow): Bias warna biru sangat halus di bagian atas layar 
+                 untuk memecah kepadatan warna hitam solid */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(15,82,214,0.08)_0%,transparent_60%)]"></div>
         </div>
 
-        {/* === NAVBAR === */}
-        {/* KUNCI PERBAIKAN: Menghapus div wrapper "relative z-50" agar Navbar bisa melayang murni secara absolute di top-0 */}
-        <Navbar />
-
-        {/* === KONTEN UTAMA & FOOTER === */}
-        <div className="relative z-10 w-full flex-1 flex flex-col">
-          <div className="flex-1 w-full">
+        {/* =========================================================
+            KONTAINER KONTEN UTAMA
+            ========================================================= */}
+        {/* z-10 memastikan semua konten berada di atas grid */}
+        <div className="flex flex-col min-h-screen relative w-full z-10">
+          
+          <Navbar />
+          
+          <main className="flex-1 w-full flex flex-col relative">
             {children}
-          </div>
-          <Footer />
-        </div>
+          </main>
 
-        {/* === FITUR UI GLOBAL === */}
-        <ScrollToTop />
+          <Footer />
+          
+        </div>
 
       </body>
     </html>

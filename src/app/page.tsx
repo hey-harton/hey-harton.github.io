@@ -5,11 +5,11 @@ import HomeCTA from "@/components/sections/home-page/HomeCTA";
 
 export default function Home() {
   return (
-    <main className="w-full flex-1 flex flex-col min-h-[calc(100vh-80px)] relative overflow-x-hidden">
+    <div className="w-full flex flex-col relative">
       <HeroSection />
       <TechStack />
       <FeaturedProjects />
       <HomeCTA />
-    </main>
+    </div>
   );
 }
