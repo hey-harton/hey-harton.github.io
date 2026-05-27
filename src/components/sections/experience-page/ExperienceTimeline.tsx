@@ -41,11 +41,13 @@ export default function ExperienceTimeline() {
   ];
 
   return (
-    <section className="w-full max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 mb-20">
+    <section className="w-full max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 pt-16 pb-32">
       <div className="relative w-full">
-        <div className="absolute left-[25%] top-2 bottom-0 w-px bg-white/10 hidden lg:block" style={{ marginLeft: '-1px' }}></div>
         
-        <div className="space-y-12">
+        {/* Garis Vertikal Timeline: Diselaraskan dengan kordinat kotak di ExperienceItem */}
+        <div className="absolute left-[25%] top-2 bottom-0 w-px bg-white/10 hidden lg:block" style={{ transform: 'translateX(-0.5px)' }}></div>
+        
+        <div className="space-y-16 lg:space-y-20">
           {dynamicExperiences.map((exp, index) => (
             <ExperienceItem 
               key={index}

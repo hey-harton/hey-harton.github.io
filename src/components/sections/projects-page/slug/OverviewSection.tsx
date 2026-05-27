@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Code2, CheckCircle2 } from "lucide-react";
+import { Code2 } from "lucide-react";
 import { ReactNode } from "react"; 
 
 interface TechItem {
@@ -15,33 +15,51 @@ interface OverviewSectionProps {
 
 export default function OverviewSection({ overview, technologies = [], features = [] }: OverviewSectionProps) {
   return (
-    <section className="w-full px-4 md:px-12 lg:px-16 max-w-[1400px] mx-auto mb-32 transform-gpu">
+    // PERBAIKAN: transform-gpu dihapus untuk optimasi scrolling
+    <section className="w-full px-4 md:px-12 lg:px-16 max-w-[1600px] mx-auto mb-32 relative">
       
-      {/* Bagian Atas: Judul & Deskripsi Narasi */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 mb-16">
+      {/* Garis vertikal estetika sebagai pemandu baca (opsional) */}
+      <div className="absolute left-4 md:left-12 lg:left-16 top-0 bottom-0 w-px bg-white/5 hidden lg:block"></div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 mb-16 relative z-10 pl-0 lg:pl-10">
         
-        {/* Kolom Kiri: Judul */}
-        <div className="lg:col-span-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Tantangan & Arsitektur.</h2>
-          <div className="w-16 h-1 bg-brand-blue"></div>
+        {/* Kolom Kiri: Judul Panel */}
+        <div className="lg:col-span-4 border-b border-white/10 lg:border-none pb-6 lg:pb-0">
+          <p className="text-brand-blue font-mono text-xs tracking-widest mb-3 uppercase">
+            &gt; INDEX_01: ARCHITECTURE
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight uppercase">
+            Tantangan & <br className="hidden lg:block"/>
+            Arsitektur<span className="text-brand-blue">_</span>
+          </h2>
         </div>
 
         {/* Kolom Kanan: Teks Deskripsi & FITUR */}
-        <div className="lg:col-span-8 flex flex-col gap-10">
+        <div className="lg:col-span-8 flex flex-col gap-12">
           
-          {/* Teks sudah rata kiri-kanan (justify) dan rapi */}
-          <div className="text-lg md:text-xl text-gray-300 font-light leading-relaxed text-justify prose prose-invert max-w-none prose-p:mb-6">
+          {/* Teks diubah menjadi text-left untuk kerapian ala log dokumen, justify dihapus */}
+          <div className="text-lg text-gray-400 font-light leading-relaxed text-left prose prose-invert max-w-none prose-p:mb-6 font-mono">
             {overview}
           </div>
 
           {/* === FITUR UTAMA PROYEK === */}
           {features && features.length > 0 && (
-            <div className="bg-white/5 border border-white/10 p-8">
-              <h3 className="text-sm uppercase tracking-widest text-gray-500 font-semibold mb-6">Fitur Utama</h3>
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8">
+            <div className="bg-[#050505] border border-white/10 p-8 rounded-none relative">
+              
+              {/* Indikator Status di sudut */}
+              <div className="absolute top-0 right-0 bg-white/5 px-2 py-1 text-[9px] font-mono tracking-widest text-gray-500 uppercase border-b border-l border-white/10">
+                MODULES
+              </div>
+
+              <h3 className="text-xs uppercase font-mono tracking-widest text-brand-blue font-semibold mb-8 border-b border-white/10 pb-2 w-max">
+                / Fitur_Utama_Platform
+              </h3>
+              
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-8">
                 {features.map((feature, index) => (
-                  <li key={index} className="flex items-start gap-3 text-gray-300">
-                    <CheckCircle2 className="text-brand-blue shrink-0 mt-0.5" size={20} />
+                  <li key={index} className="flex items-start gap-3 text-gray-300 font-light text-sm">
+                    {/* CheckCircle diganti dengan chevron terminal agar lebih teknis */}
+                    <span className="text-brand-blue font-mono font-bold shrink-0 mt-0.5">&gt;</span>
                     <span className="leading-relaxed">{feature}</span>
                   </li>
                 ))}
@@ -53,18 +71,17 @@ export default function OverviewSection({ overview, technologies = [], features 
       </div>
 
       {/* Bagian Bawah: Core Technologies */}
-      <div className="pt-10 border-t border-white/10">
-        <h3 className="text-sm uppercase tracking-widest text-gray-500 font-semibold mb-6">Teknologi Inti</h3>
-        <div className="flex flex-wrap gap-4">
-          {/* 3. KUNCI PERBAIKAN: Mapping data tech dinamis dari Markdown */}
+      <div className="pt-12 border-t border-white/10 relative z-10 pl-0 lg:pl-10">
+        <h3 className="text-xs uppercase font-mono tracking-widest text-gray-500 font-semibold mb-6">/ Teknologi_Inti_Yang_Dikerahkan</h3>
+        
+        <div className="flex flex-wrap gap-3">
           {technologies.map((tech, i) => (
             <div 
               key={i} 
-              className="flex items-center gap-3 px-5 py-3 border border-white/10 bg-white/5 text-gray-200 text-sm font-medium hover:border-brand-blue hover:text-white hover:bg-white/10 transition-all cursor-default"
+              className="flex items-center gap-3 px-4 py-2 border border-white/10 bg-[#050505] text-gray-400 text-xs font-mono uppercase tracking-wider hover:border-brand-blue hover:text-white transition-colors cursor-default rounded-none"
             >
-              {/* Jika di file .md icon diisi, tampilkan logonya. Jika kosong (""), tampilkan logo </> bawaan */}
               {tech.icon && tech.icon !== "" ? (
-                <div className="relative w-5 h-5 flex-shrink-0">
+                <div className="relative w-4 h-4 flex-shrink-0 opacity-70 group-hover:opacity-100 transition-opacity">
                   <Image 
                     src={tech.icon} 
                     alt={`${tech.name} logo`} 
@@ -73,7 +90,7 @@ export default function OverviewSection({ overview, technologies = [], features 
                   />
                 </div>
               ) : (
-                <Code2 size={18} className="text-gray-400 flex-shrink-0" />
+                <Code2 size={16} className="text-gray-500 flex-shrink-0" />
               )}
               <span>{tech.name}</span>
             </div>

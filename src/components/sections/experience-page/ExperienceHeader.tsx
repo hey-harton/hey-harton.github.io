@@ -9,10 +9,10 @@ const Crosshair = ({ className }: { className?: string }) => (
 
 export default function ExperienceHeader() {
   return (
-    // Menggunakan padding atas yang cukup besar (pt-32) agar tidak tertutup Navbar
-    <section className="relative w-full border-b border-white/10 bg-[#0a0a0e] overflow-hidden transform-gpu pt-32 pb-20 md:pt-40 md:pb-24">
+    // PERBAIKAN: Mengubah bg-[#0a0a0e] menjadi bg-transparent agar menyatu sempurna dengan Navbar dan latar belakang Layout utama.
+    <section className="relative w-full border-b border-white/10 bg-transparent overflow-hidden transform-gpu pt-10 md:pt-40 pb-20 md:pb-24">
       
-      {/* Latar Belakang Grid Teknis (Opasitas 0.08 yang Diperkuat) */}
+      {/* Latar Belakang Grid Teknis (Opasitas 0.08) - Akan merambat dari balik Navbar */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:linear-gradient(to_bottom,white,transparent)] pointer-events-none"></div>
 
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 relative z-10">
@@ -24,7 +24,7 @@ export default function ExperienceHeader() {
           <Crosshair className="absolute -top-[7px] -left-[7.5px] text-brand-blue z-20" />
           <Crosshair className="absolute -bottom-[7px] -left-[7.5px] text-brand-blue z-20" />
 
-          <div className="flex flex-col items-start">
+          <div className="flex flex-col items-start pt-6 md:pt-8">
             
             {/* Label Atas bergaya Terminal Path */}
             <div className="flex items-center gap-3 text-brand-blue text-xs font-mono uppercase tracking-widest mb-8">

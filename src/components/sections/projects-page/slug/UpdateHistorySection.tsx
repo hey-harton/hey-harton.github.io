@@ -81,42 +81,51 @@ export default async function UpdateHistorySection({ githubUrl, updates = [] }: 
       }));
 
   return (
-    <section className="w-full px-4 md:px-12 lg:px-16 max-w-[1400px] mx-auto mb-32 pt-10 border-t border-white/5 transform-gpu">
-      <div className="max-w-4xl">
+    // PERBAIKAN: Hapus transform-gpu untuk optimasi scroll
+    <section className="w-full px-4 md:px-12 lg:px-16 max-w-[1600px] mx-auto mb-32 pt-16 border-t border-white/10 relative">
+      
+      <div className="max-w-4xl relative z-10 pl-0 lg:pl-10">
         
-        {/* Header */}
+        {/* Header ala Terminal */}
         <div className="mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Project Lifecycle.</h2>
-          <p className="text-lg text-gray-400 font-light">
+          <p className="text-brand-blue font-mono text-xs tracking-widest mb-3 uppercase">
+            &gt; INDEX_03: SYSTEM_LOGS
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 uppercase tracking-tight">Siklus Log Proyek<span className="text-brand-blue">_</span></h2>
+          <p className="text-sm md:text-base text-gray-500 font-mono tracking-wide">
             {hasGithubCommits 
-              ? "Development history and deployment paths directly from GitHub." 
-              : "Development history and architectural milestones."}
+              ? "Riwayat deployment dan pipeline pengembangan ditarik langsung dari repositori GitHub." 
+              : "Riwayat pengembangan manual dan pencapaian arsitektural."}
           </p>
         </div>
 
         {/* Timeline Updates */}
-        <div className="relative border-l border-white/10 ml-2 md:ml-4 space-y-12 pb-6">
+        <div className="relative border-l border-white/10 ml-2 md:ml-4 space-y-10 pb-6">
           {timelineData.map((item) => (
             <div key={item.id} className="relative pl-8 md:pl-12 group">
               
-              {/* Node / Titik Timeline */}
-              <div className="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-brand-blue shadow-[0_0_10px_rgba(59,130,246,0.5)] ring-4 ring-[#070709] group-hover:bg-brand-green group-hover:shadow-[0_0_12px_rgba(16,185,129,0.6)] transition-all duration-300"></div>
+              {/* Node / Titik Timeline (Diubah menjadi kotak tajam) */}
+              <div className="absolute -left-[4.5px] top-2.5 w-2 h-2 border border-brand-blue bg-[#050505] group-hover:bg-brand-blue transition-colors duration-300 rounded-none shadow-[0_0_10px_rgba(59,130,246,0)] group-hover:shadow-[0_0_15px_rgba(59,130,246,0.4)]"></div>
               
               {/* Meta Data: Version & Date */}
-              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 mb-5">
-                <span className="flex items-center gap-2 text-brand-blue font-mono font-bold border border-brand-blue/30 bg-brand-blue/10 px-4 py-1.5 text-sm w-max tracking-wide group-hover:border-brand-green/40 group-hover:text-brand-green group-hover:bg-brand-green/10 transition-colors">
-                  <GitCommit size={15} />
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 mb-4">
+                <span className="flex items-center gap-2 text-brand-blue font-mono font-bold border border-brand-blue/30 bg-brand-blue/5 px-3 py-1 text-[10px] uppercase w-max tracking-widest group-hover:border-brand-blue transition-colors rounded-none">
+                  <GitCommit size={14} />
                   {item.version}
                 </span>
-                <div className="flex items-center gap-2 text-gray-500 text-sm font-mono">
-                  <CalendarClock size={15} />
+                <div className="flex items-center gap-2 text-gray-500 text-[10px] uppercase font-mono tracking-widest">
+                  <CalendarClock size={14} />
                   <span>{item.date}</span>
                 </div>
               </div>
               
               {/* Kartu Deskripsi Update */}
-              <div className="bg-white/[0.02] border border-white/5 p-6 hover:bg-white/[0.04] hover:border-white/10 transition-all duration-300 flex flex-col gap-5">
-                <p className="text-gray-300 leading-relaxed text-base md:text-lg font-light text-justify">
+              <div className="bg-[#050505] border border-white/5 p-6 group-hover:border-brand-blue/30 transition-all duration-300 flex flex-col gap-5 rounded-none relative">
+                
+                {/* Efek aksen di sisi kiri kartu */}
+                <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-transparent group-hover:bg-brand-blue transition-colors"></div>
+
+                <p className="text-gray-400 font-mono text-xs md:text-sm font-light text-left leading-relaxed">
                   {item.description}
                 </p>
                 
@@ -125,9 +134,9 @@ export default async function UpdateHistorySection({ githubUrl, updates = [] }: 
                   <Link 
                     href={item.link}
                     target="_blank"
-                    className="inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-brand-blue transition-colors w-max"
+                    className="inline-flex items-center gap-2 text-[10px] font-mono font-bold uppercase tracking-widest text-gray-500 hover:text-brand-blue transition-colors w-max pb-1 border-b border-transparent hover:border-brand-blue"
                   >
-                    LIHAT KODE DI GITHUB <ExternalLink size={14} />
+                    INSPECT_COMMIT_DATA <ExternalLink size={14} />
                   </Link>
                 )}
               </div>

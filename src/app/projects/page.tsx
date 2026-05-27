@@ -12,11 +12,15 @@ export default function ProjectsPage() {
   const projects = getAllProjects();
 
   return (
-    <main className="w-full flex flex-col min-h-screen relative overflow-hidden pt-20 pb-0 transform-gpu">
+    // PERBAIKAN UTAMA: 
+    // 1. Hapus "transform-gpu" dari <main> agar browser me-render scroll secara normal (tidak membebani VRAM GPU).
+    // 2. Ubah "overflow-hidden" menjadi "overflow-x-hidden" agar tidak mengunci perhitungan tinggi halaman saat di-scroll.
+    <main className="w-full flex flex-col min-h-screen relative overflow-x-hidden pb-0">
       
-      {/* Background Glow Effect (Dioptimalkan dengan transform-gpu agar anti-lag) */}
-      <div className="absolute top-40 right-0 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-brand-green/10 blur-[120px] rounded-full pointer-events-none -z-10 transform-gpu translate-z-0"></div>
-      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-brand-blue/10 blur-[120px] rounded-full pointer-events-none -z-10 transform-gpu translate-z-0"></div>
+      {/* Background Glow Effect */}
+      {/* transform-gpu hanya kita pertahankan pada elemen cahaya ini saja agar rendering blurnya yang diproses GPU, bukan seluruh halaman */}
+      <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-brand-green/10 blur-[120px] rounded-full pointer-events-none -z-10 transform-gpu"></div>
+      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-brand-blue/10 blur-[120px] rounded-full pointer-events-none -z-10 transform-gpu"></div>
 
       {/* Kontainer batasan dipindah ke dalam komponen header & grid */}
       <ProjectsHeader />

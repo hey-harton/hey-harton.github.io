@@ -16,18 +16,19 @@ const Crosshair = ({ className }: { className?: string }) => (
 
 export default function HeroSection() {
   return (
-    <section id="home" className="relative w-full border-b border-white/10 bg-[#0a0a0e] overflow-hidden transform-gpu min-h-[calc(100vh-5rem)] flex items-center py-12">
+    // PERBAIKAN: Hapus min-h dan padding vertikal dari section utama. Gunakan h-screen agar memenuhi layar penuh dari atas tanpa sisa.
+    <section id="home" className="relative w-full border-b border-white/10 bg-transparent overflow-hidden transform-gpu h-screen flex items-center">
       
-      {/* KUNCI PERBAIKAN: Mengubah opasitas rgba menjadi 0.08 agar grid lebih tegas */}
+      {/* Latar Belakang Grid Teknis */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:linear-gradient(to_bottom,white,transparent)] pointer-events-none"></div>
 
-      <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 flex flex-col-reverse lg:flex-row items-center justify-between relative z-10 w-full gap-12 lg:gap-8">
+      <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 flex flex-col-reverse lg:flex-row items-center justify-between relative z-10 w-full gap-12 lg:gap-8 mt-16">
         
         {/* Kolom Kiri: Teks & Konsol Logika */}
         <div className="flex-1 flex flex-col justify-center lg:pr-10 z-20 border-r border-white/5 py-4">
           
           {/* Indikator Status ala Terminal */}
-          <div className="flex items-center gap-3 mb-8">
+          <div className="flex items-center gap-3 mb-8 mt-4 lg:mt-0">
             <span className="w-2 h-2 bg-brand-blue animate-pulse"></span>
             <span className="text-xs font-mono text-brand-blue uppercase tracking-widest">[ SYSTEM: ONLINE ]</span>
           </div>
@@ -60,7 +61,7 @@ export default function HeroSection() {
               href="/about"
               className="group flex items-center justify-center gap-4 bg-brand-blue text-white px-8 py-4 font-semibold hover:bg-[#0f52d6] transition-colors rounded-none"
             >
-              <span>Tentang Saya</span> 
+              <span>ACCESS PROFILE</span> 
               <ArrowRight size={18} className="transform-gpu group-hover:translate-x-1 transition-transform" />
             </Link>
             
@@ -79,11 +80,11 @@ export default function HeroSection() {
         </div>
 
         {/* Kolom Kanan: Foto Profil Rigid */}
-        <div className="flex-1 flex justify-center lg:justify-end items-center relative w-full">
+        <div className="flex-1 flex justify-center lg:justify-end items-center relative w-full pt-8 lg:pt-0">
           
-          <div className="relative w-full max-w-[380px] lg:max-w-[420px] aspect-[4/5] border border-white/10 bg-white/[0.02]">
+          <div className="relative w-full max-w-[380px] xl:max-w-[450px] aspect-[4/5] border border-white/10 bg-white/[0.02]">
             
-            {/* Crosshairs */}
+            {/* Crosshairs di setiap sudut atas */}
             <Crosshair className="absolute -top-[7px] -left-[7px] text-brand-blue" />
             <Crosshair className="absolute -top-[7px] -right-[7px] text-brand-blue" />
             <Crosshair className="absolute -bottom-[7px] -left-[7px] text-brand-blue" />
@@ -101,7 +102,7 @@ export default function HeroSection() {
                />
             </div>
             
-            {/* Label Metadata */}
+            {/* Label Metadata di sudut bawah bingkai */}
             <div className="absolute bottom-4 right-8 bg-[#0a0a0e] border border-white/10 px-2 py-0.5 text-[10px] font-mono text-gray-500 z-20">
               IMG_SRC: ROOT/PROFILE
             </div>

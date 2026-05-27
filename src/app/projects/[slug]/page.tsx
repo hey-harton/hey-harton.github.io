@@ -32,10 +32,13 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
   const frontmatter = project.frontmatter || {};
 
   return (
-    <main className="w-full min-h-screen pt-20 lg:pt-24 pb-20 relative overflow-x-hidden transform-gpu">
+    // PERBAIKAN: 
+    // 1. Hapus pt-20 lg:pt-24 agar HeroSection naik menyentuh ujung atas layar.
+    // 2. Hapus transform-gpu dari kontainer utama agar scroll tetap mulus dan ringan.
+    <main className="w-full min-h-screen pb-20 relative overflow-x-hidden">
       
-      {/* Background Glow (Dioptimalkan anti-lag untuk Mobile) */}
-      <div className="absolute top-0 left-1/4 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-[radial-gradient(circle,rgba(59,130,246,0.15)_0%,transparent_60%)] rounded-full pointer-events-none -z-10 transform-gpu translate-z-0"></div>
+      {/* Background Glow (Dioptimalkan, transform-gpu hanya diletakkan pada elemen cahaya ini saja) */}
+      <div className="absolute top-0 left-1/4 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-[radial-gradient(circle,rgba(59,130,246,0.15)_0%,transparent_60%)] rounded-full pointer-events-none -z-10 transform-gpu"></div>
       
       <HeroSection 
         title={project.title}

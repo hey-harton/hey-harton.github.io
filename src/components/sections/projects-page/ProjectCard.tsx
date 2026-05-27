@@ -9,6 +9,12 @@ const GithubIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const Crosshair = ({ className }: { className?: string }) => ( 
+  <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" strokeWidth="1" className={className}>
+    <path d="M7.5 0V15M0 7.5H15" />
+  </svg> 
+);
+
 export interface ProjectData {
   id: number;
   slug: string; 
@@ -21,36 +27,45 @@ export interface ProjectData {
 
 export default function ProjectCard({ project }: { project: ProjectData }) {
   return (
-    // Desain Enterprise: Tepi tajam (rounded-none), warna solid pekat, garis tepi tipis
-    <div className="group flex flex-col bg-[#070709] border border-white/10 hover:border-brand-blue/50 transition-all duration-500 relative">
+    <div className="group flex flex-col bg-[#050505] border border-white/10 hover:border-brand-green/50 transition-all duration-500 relative rounded-none">
       
-      {/* Efek Garis Aksen di atas card yang menyala saat di-hover */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-transparent group-hover:bg-gradient-to-r group-hover:from-brand-blue group-hover:to-brand-green transition-all duration-500 z-20"></div>
+      {/* Efek Garis Aksen (Indikator Aktif) */}
+      <div className="absolute top-0 left-0 w-full h-[2px] bg-transparent group-hover:bg-brand-green transition-all duration-500 z-20 scale-x-0 group-hover:scale-x-100 origin-left"></div>
 
-      {/* Bagian Gambar Pratinjau */}
-      <div className="relative w-full h-64 md:h-[340px] overflow-hidden bg-[#030303] border-b border-white/5">
-        <Image 
-          src={project.image} 
-          alt={project.title} 
-          fill 
-          className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-in-out"
-        />
+      {/* Bagian Gambar Pratinjau dengan Bingkai Teknis */}
+      <div className="relative w-full h-64 md:h-[340px] bg-[#030303] border-b border-white/10 p-2 md:p-3">
+        
+        {/* Crosshairs Pengunci Bingkai Gambar */}
+        <Crosshair className="absolute top-[2px] left-[2px] text-brand-green/30 group-hover:text-brand-green transition-colors z-20" />
+        <Crosshair className="absolute top-[2px] right-[2px] text-brand-green/30 group-hover:text-brand-green transition-colors z-20" />
+        <Crosshair className="absolute bottom-[2px] left-[2px] text-brand-green/30 group-hover:text-brand-green transition-colors z-20" />
+        <Crosshair className="absolute bottom-[2px] right-[2px] text-brand-green/30 group-hover:text-brand-green transition-colors z-20" />
+
+        <div className="relative w-full h-full overflow-hidden border border-white/5">
+          <Image 
+            src={project.image} 
+            alt={project.title} 
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // PERBAIKAN: Menambahkan sizes untuk optimasi loading gambar
+            className="object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-in-out"
+          />
+        </div>
       </div>
 
       {/* Konten Teks */}
       <div className="p-8 md:p-10 flex flex-col flex-1">
-        <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight group-hover:text-brand-blue transition-colors">
+        <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight group-hover:text-brand-green transition-colors uppercase">
           {project.title}
         </h3>
         
-        <p className="text-gray-400 mb-8 flex-1 text-base leading-relaxed font-light">
+        <p className="text-gray-400 mb-8 flex-1 text-base leading-relaxed font-light text-left">
           {project.description}
         </p>
 
-        {/* Tech Stack Badges (Gaya Data-block) */}
+        {/* Tech Stack Badges ala Log Data */}
         <div className="flex flex-wrap gap-2 mb-10">
           {project.techStack.map((tech, i) => (
-            <span key={i} className="px-3 py-1.5 text-xs font-mono font-medium tracking-widest uppercase text-gray-400 border border-white/10 bg-white/5 hover:border-white/20 transition-colors cursor-default">
+            <span key={i} className="px-2 py-1 text-[10px] font-mono tracking-widest uppercase text-gray-500 border border-white/10 bg-[#0a0a0e] group-hover:border-brand-green/30 group-hover:text-gray-300 transition-colors cursor-default rounded-none">
               {tech}
             </span>
           ))}
@@ -59,14 +74,14 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
         {/* Action Buttons */}
         <div className="flex justify-between items-center mt-auto pt-6 border-t border-white/10">
           
-          <Link href={`/projects/${project.slug}`} className="flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-white hover:text-brand-blue transition-colors group/link">
-            <span>View Case Study</span> 
-            <ArrowRight size={18} className="group-hover/link:translate-x-2 transition-transform" />
+          <Link href={`/projects/${project.slug}`} className="flex items-center gap-3 text-[10px] font-mono font-bold uppercase tracking-widest text-white hover:text-brand-green transition-colors group/link pb-1 border-b border-transparent hover:border-brand-green">
+            <span>Execute_Case_Study</span> 
+            <ArrowRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
           </Link>
 
           {project.githubUrl && project.githubUrl !== "#" && (
-            <a href={project.githubUrl} target="_blank" rel="noreferrer" className="flex items-center text-gray-500 hover:text-white transition-colors" title="Source Code">
-              <GithubIcon className="w-6 h-6" />
+            <a href={project.githubUrl} target="_blank" rel="noreferrer" className="flex items-center text-gray-600 hover:text-brand-green transition-colors" title="Source Code">
+              <GithubIcon className="w-5 h-5" />
             </a>
           )}
         </div>
