@@ -1,5 +1,8 @@
+'use client'; // Wajib ditambahkan agar usePathname berfungsi
+
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { usePathname } from "next/navigation"; // TAMBAHAN: Impor hook pendeteksi rute
 
 // Tanda Plus (Crosshair) khas titik kordinat arsitektur
 const Crosshair = ({ className }: { className?: string }) => ( 
@@ -9,6 +12,13 @@ const Crosshair = ({ className }: { className?: string }) => (
 );
 
 export default function Footer() {
+  const pathname = usePathname(); // TAMBAHAN: Inisialisasi pengecek rute
+
+  // LOGIKA PENYEMBUNYIAN: Jika rute adalah coming-soon, batalkan render Footer
+  if (pathname === "/coming-soon") {
+    return null;
+  }
+
   return (
     // PERBAIKAN: Menghapus transform-gpu dan sedikit menyesuaikan padding atas untuk mobile (pt-12 md:pt-16)
     <footer className="relative w-full border-t border-white/10 bg-[#0a0a0e] pt-12 md:pt-16 pb-8">
@@ -48,6 +58,7 @@ export default function Footer() {
               <Link href="/about" className="text-gray-400 hover:text-white hover:pl-2 transition-all font-mono text-xs md:text-sm w-max">&gt; Tentang</Link>
               <Link href="/experience" className="text-gray-400 hover:text-white hover:pl-2 transition-all font-mono text-xs md:text-sm w-max">&gt; Pengalaman</Link>
               <Link href="/projects" className="text-gray-400 hover:text-white hover:pl-2 transition-all font-mono text-xs md:text-sm w-max">&gt; Proyek</Link>
+              <Link href="/datasets" className="text-gray-400 hover:text-white hover:pl-2 transition-all font-mono text-xs md:text-sm w-max">&gt; Dataset</Link>
               <Link href="/certifications" className="text-gray-400 hover:text-white hover:pl-2 transition-all font-mono text-xs md:text-sm w-max">&gt; Sertifikasi</Link>
             </div>
 

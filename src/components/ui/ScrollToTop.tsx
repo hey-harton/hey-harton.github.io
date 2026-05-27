@@ -37,25 +37,28 @@ export default function ScrollToTop() {
   };
 
   return (
+    // PERBAIKAN 1: 'group' dipindah ke sini agar hover mendeteksi seluruh area
+    // PERBAIKAN 2: transform-gpu dihapus, posisi diubah menjadi bottom-4/6 untuk HP
     <div 
-      className={`fixed bottom-8 right-8 z-50 transition-all duration-500 transform-gpu ${
+      className={`fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 transition-all duration-500 group ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"
       }`}
     >
       <button
         onClick={scrollToTop}
         aria-label="Scroll to top"
-        className="relative group bg-[#050505] hover:bg-brand-blue border border-white/10 hover:border-brand-blue p-4 text-gray-500 hover:text-white transition-all duration-300 rounded-none flex items-center justify-center"
+        // PERBAIKAN 3: Warna default diubah menjadi aksen biru (border dan teks biru)
+        className="relative bg-[#050505] hover:bg-brand-blue border border-brand-blue/40 hover:border-brand-blue p-3 md:p-4 text-brand-blue hover:text-[#050505] transition-all duration-300 rounded-none flex items-center justify-center shadow-lg"
       >
-        {/* Ornamen Crosshair khas Carbon Design */}
-        <Crosshair className="absolute -top-[5px] -left-[5px] text-brand-blue/50 group-hover:text-white/80 transition-colors" />
-        <Crosshair className="absolute -bottom-[5px] -right-[5px] text-brand-blue/50 group-hover:text-white/80 transition-colors" />
+        {/* Ornamen Crosshair khas Carbon Design, menyesuaikan kontras saat di-hover */}
+        <Crosshair className="absolute -top-[5px] -left-[5px] text-brand-blue group-hover:text-[#050505] transition-colors" />
+        <Crosshair className="absolute -bottom-[5px] -right-[5px] text-brand-blue group-hover:text-[#050505] transition-colors" />
 
         <ArrowUp size={20} className="group-hover:-translate-y-1 transition-transform" />
       </button>
       
-      {/* Label Teknis */}
-      <div className="absolute -bottom-5 right-0 text-[9px] font-mono text-gray-600 tracking-widest text-right whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+      {/* Label Teknis: Sekarang akan muncul dengan sempurna saat tombol di-hover */}
+      <div className="absolute -bottom-5 right-0 text-[9px] font-mono text-brand-blue/80 tracking-widest text-right whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
         CMD: RETURN_0
       </div>
     </div>

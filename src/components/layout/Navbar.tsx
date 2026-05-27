@@ -2,11 +2,18 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation"; // TAMBAHAN: Impor hook pendeteksi rute
 import { Menu, X } from "lucide-react"; 
 import AnimatedLogo from "@/components/ui/AnimatedLogo";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname(); // TAMBAHAN: Inisialisasi pengecek rute
+
+  // LOGIKA PENYEMBUNYIAN: Jika rute adalah coming-soon, batalkan render komponen ini
+  if (pathname === "/coming-soon") {
+    return null;
+  }
 
   return (
     // KUNCI PERBAIKAN PERFORMA: 
@@ -30,8 +37,9 @@ export default function Navbar() {
         {/* C. Tombol Contact & Toggle Mobile */}
         <div className="flex items-center gap-4 z-10">
           {/* Tombol Desktop Diubah jadi kaku (rounded-none), warna solid, tanpa gradien, font-mono */}
+          {/* KOREKSI KECIL: Memastikan href mengarah ke "/contact" sesuai dengan struktur folder yang kita buat sebelumnya */}
           <Link 
-            href="/contacts"
+            href="/contact"
             className="hidden md:flex items-center justify-center bg-brand-blue px-6 py-2 font-mono text-xs font-semibold text-white hover:bg-[#0f52d6] transition-colors rounded-none uppercase tracking-widest border border-transparent"
           >
             Hubungi Saya
@@ -62,7 +70,7 @@ export default function Navbar() {
             </div>
             
             <Link 
-              href="/contacts"
+              href="/contact"
               onClick={() => setIsOpen(false)}
               className="flex items-center justify-center w-full bg-brand-blue px-6 py-4 font-mono font-bold text-xs tracking-widest uppercase text-white mt-2 hover:bg-[#0f52d6] transition-colors rounded-none"
             >
