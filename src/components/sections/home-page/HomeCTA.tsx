@@ -57,7 +57,7 @@ export default function HomeCTASection() {
                 href="/contacts" 
                 className="group/btn flex items-center justify-between bg-[#0a0a0e] text-white px-6 py-4 text-[10px] font-mono font-bold hover:bg-brand-blue hover:text-[#050505] transition-colors w-full sm:w-[300px] border border-white/20 hover:border-brand-blue rounded-none uppercase tracking-widest"
               >
-                <span>EXECUTE_CONTACT_PROTOCOL</span>
+                <span>HUBUNGI SAYA</span>
                 <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
               </Link>
             </div>

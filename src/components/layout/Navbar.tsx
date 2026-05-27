@@ -63,7 +63,7 @@ export default function Navbar() {
               onClick={() => setIsOpen(false)}
               className="flex items-center justify-center w-full bg-brand-blue px-6 py-4 font-mono font-bold text-xs tracking-widest uppercase text-white mt-2 hover:bg-[#0f52d6] transition-colors rounded-none"
             >
-              Execute_Contact
+              Hubungi Saya
             </Link>
           </div>
         </div>

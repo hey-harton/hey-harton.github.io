@@ -39,20 +39,9 @@ export default function ContactInfoSection() {
           </div>
           <div>
             <span className="block text-[10px] text-gray-500 uppercase tracking-widest mb-1 font-mono">PROTOCOL: SMTP (EMAIL)</span>
-            <span className="text-white font-mono font-semibold">contact@htn.com</span>
+            <span className="text-white font-mono font-semibold">hartonoadjisusanto@gmail.com</span>
           </div>
         </a>
-
-        {/* Location */}
-        <div className="flex items-center gap-5 p-4 bg-[#050505] border border-white/10 rounded-none relative">
-          <div className="p-3 bg-[#0a0a0e] text-gray-400 border border-white/5">
-            <MapPin size={24} />
-          </div>
-          <div>
-            <span className="block text-[10px] text-gray-500 uppercase tracking-widest mb-1 font-mono">BASE_OPERATIONS</span>
-            <span className="text-white font-mono font-semibold">Depok, Special Region of Yogyakarta, Indonesia</span>
-          </div>
-        </div>
       </div>
 
       {/* Social Links */}
