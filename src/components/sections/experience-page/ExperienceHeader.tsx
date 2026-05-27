@@ -9,8 +9,8 @@ const Crosshair = ({ className }: { className?: string }) => (
 
 export default function ExperienceHeader() {
   return (
-    // PERBAIKAN: Mengubah bg-[#0a0a0e] menjadi bg-transparent agar menyatu sempurna dengan Navbar dan latar belakang Layout utama.
-    <section className="relative w-full border-b border-white/10 bg-transparent overflow-hidden transform-gpu pt-10 md:pt-40 pb-20 md:pb-24">
+    // PERBAIKAN: Hapus transform-gpu, sesuaikan pt-28 untuk mobile agar tidak tertutup Navbar
+    <section className="relative w-full border-b border-white/10 bg-transparent overflow-hidden pt-28 md:pt-40 pb-16 md:pb-24 !mt-0">
       
       {/* Latar Belakang Grid Teknis (Opasitas 0.08) - Akan merambat dari balik Navbar */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:linear-gradient(to_bottom,white,transparent)] pointer-events-none"></div>
@@ -24,23 +24,23 @@ export default function ExperienceHeader() {
           <Crosshair className="absolute -top-[7px] -left-[7.5px] text-brand-blue z-20" />
           <Crosshair className="absolute -bottom-[7px] -left-[7.5px] text-brand-blue z-20" />
 
-          <div className="flex flex-col items-start pt-6 md:pt-8">
+          <div className="flex flex-col items-start pt-4 md:pt-8">
             
-            {/* Label Atas bergaya Terminal Path */}
-            <div className="flex items-center gap-3 text-brand-blue text-xs font-mono uppercase tracking-widest mb-8">
+            {/* Label Atas bergaya Terminal Path (Ukuran font responsif) */}
+            <div className="flex items-center gap-3 text-brand-blue text-[10px] md:text-xs font-mono uppercase tracking-widest mb-6 md:mb-8">
               <Cpu size={14} className="animate-pulse" />
               <span>&gt; DIRECTORY: /EXPERIENCE/TRACK_RECORD</span>
             </div>
             
-            {/* Judul Utama yang Tegas */}
-            <h1 className="text-5xl md:text-6xl lg:text-[5.5rem] font-bold text-white tracking-tight leading-[1.05] mb-8 max-w-4xl">
-              Architecting <br className="hidden md:block"/>
-              Resilient <span className="text-brand-blue">Operations.</span>
+            {/* Judul Utama: Diterjemahkan ke Bahasa Indonesia & Ukuran font dibuat responsif agar tidak tumpah di HP */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-bold text-white tracking-tight leading-[1.05] mb-6 md:mb-8 max-w-4xl uppercase break-words">
+              Arsitektur Operasional <br className="hidden md:block"/>
+              <span className="text-brand-blue">Tangguh.</span>
               <span className="animate-pulse text-white">_</span>
             </h1>
             
-            {/* Deskripsi (Menggunakan font-mono untuk estetika konsol) */}
-            <p className="text-gray-400 text-lg md:text-xl font-mono font-light leading-relaxed max-w-3xl text-left">
+            {/* Deskripsi: Font lebih kecil di mobile agar mudah dibaca */}
+            <p className="text-gray-400 text-sm md:text-lg lg:text-xl font-mono font-light leading-relaxed max-w-3xl text-left">
               Menyatukan rekayasa jaringan enterprise, rekayasa data cerdas, dan kepemimpinan taktis komunitas untuk membangun ekosistem digital yang andal dan terskala.
             </p>
 

@@ -1,6 +1,11 @@
 import ExperienceHeader from "@/components/sections/experience-page/ExperienceHeader";
 import ExperienceTimeline from "@/components/sections/experience-page/ExperienceTimeline";
 
+export const metadata = {
+  title: "Pengalaman | Hartono Adji Susanto",
+  description: "Curated datasets for machine learning, medical informatics, and network analysis.",
+};
+
 export default function ExperiencePage() {
   return (
     // KUNCI PERBAIKAN: Menghapus "pt-20" agar ExperienceHeader bisa merambat naik menyentuh top-0 layar tanpa halangan

@@ -4,7 +4,7 @@ import FeaturedCertSection from "@/components/sections/certifications-page/Featu
 import CertGridSection from "@/components/sections/certifications-page/CertGridSection";
 
 export const metadata = {
-  title: "Certifications | Hartono Technolution",
+  title: "Sertifikasi | Hartono Adji Susanto",
   description: "Industry-recognized certifications in Networking, Cloud, and Data Science.",
 };
 

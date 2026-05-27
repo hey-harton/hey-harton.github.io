@@ -3,7 +3,7 @@ import HeroSection from "@/components/sections/dataset-page/HeroSection";
 import DatasetGridSection from "@/components/sections/dataset-page/DatasetGridSection";
 
 export const metadata = {
-  title: "Datasets | Hartono Technolution",
+  title: "Dataset | Hartono Adji Susanto",
   description: "Curated datasets for machine learning, medical informatics, and network analysis.",
 };
 
