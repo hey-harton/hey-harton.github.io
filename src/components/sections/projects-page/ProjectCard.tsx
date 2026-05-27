@@ -33,7 +33,7 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
       <div className="absolute top-0 left-0 w-full h-[2px] bg-transparent group-hover:bg-brand-green transition-all duration-500 z-20 scale-x-0 group-hover:scale-x-100 origin-left"></div>
 
       {/* Bagian Gambar Pratinjau dengan Bingkai Teknis */}
-      <div className="relative w-full h-64 md:h-[340px] bg-[#030303] border-b border-white/10 p-2 md:p-3">
+      <div className="relative w-full h-56 sm:h-64 md:h-[340px] bg-[#030303] border-b border-white/10 p-2 md:p-3">
         
         {/* Crosshairs Pengunci Bingkai Gambar */}
         <Crosshair className="absolute top-[2px] left-[2px] text-brand-green/30 group-hover:text-brand-green transition-colors z-20" />
@@ -46,42 +46,46 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
             src={project.image} 
             alt={project.title} 
             fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // PERBAIKAN: Menambahkan sizes untuk optimasi loading gambar
-            className="object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-in-out"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            // PERBAIKAN: transisi zoom gambar dibuat sedikit lebih cepat agar UI terasa responsif (duration-500)
+            className="object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
           />
         </div>
       </div>
 
       {/* Konten Teks */}
-      <div className="p-8 md:p-10 flex flex-col flex-1">
-        <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight group-hover:text-brand-green transition-colors uppercase">
+      {/* PERBAIKAN: Padding responsif (p-6 di HP, p-10 di Laptop) agar kotak tidak terlalu tinggi */}
+      <div className="p-6 md:p-10 flex flex-col flex-1">
+        <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-3 md:mb-4 tracking-tight group-hover:text-brand-green transition-colors uppercase line-clamp-2">
           {project.title}
         </h3>
         
-        <p className="text-gray-400 mb-8 flex-1 text-base leading-relaxed font-light text-left">
+        {/* PERBAIKAN: Ukuran font deskripsi disesuaikan, margin bawah dikurangi (mb-6 md:mb-8) */}
+        <p className="text-gray-400 mb-6 md:mb-8 flex-1 text-sm md:text-base leading-relaxed font-light text-left">
           {project.description}
         </p>
 
         {/* Tech Stack Badges ala Log Data */}
-        <div className="flex flex-wrap gap-2 mb-10">
+        <div className="flex flex-wrap gap-2 mb-8 md:mb-10">
           {project.techStack.map((tech, i) => (
-            <span key={i} className="px-2 py-1 text-[10px] font-mono tracking-widest uppercase text-gray-500 border border-white/10 bg-[#0a0a0e] group-hover:border-brand-green/30 group-hover:text-gray-300 transition-colors cursor-default rounded-none">
+            <span key={i} className="px-2 py-1 text-[9px] md:text-[10px] font-mono tracking-widest uppercase text-gray-500 border border-white/10 bg-[#0a0a0e] group-hover:border-brand-green/30 group-hover:text-gray-300 transition-colors cursor-default rounded-none">
               {tech}
             </span>
           ))}
         </div>
 
         {/* Action Buttons */}
-        <div className="flex justify-between items-center mt-auto pt-6 border-t border-white/10">
+        {/* PERBAIKAN: pt-4 di mobile, pt-6 di desktop agar padat */}
+        <div className="flex justify-between items-center mt-auto pt-4 md:pt-6 border-t border-white/10">
           
-          <Link href={`/projects/${project.slug}`} className="flex items-center gap-3 text-[10px] font-mono font-bold uppercase tracking-widest text-white hover:text-brand-green transition-colors group/link pb-1 border-b border-transparent hover:border-brand-green">
+          <Link href={`/projects/${project.slug}`} className="flex items-center gap-3 text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-widest text-white hover:text-brand-green transition-colors group/link pb-1 border-b border-transparent hover:border-brand-green">
             <span>Execute_Case_Study</span> 
             <ArrowRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
           </Link>
 
           {project.githubUrl && project.githubUrl !== "#" && (
             <a href={project.githubUrl} target="_blank" rel="noreferrer" className="flex items-center text-gray-600 hover:text-brand-green transition-colors" title="Source Code">
-              <GithubIcon className="w-5 h-5" />
+              <GithubIcon className="w-4 h-4 md:w-5 md:h-5" />
             </a>
           )}
         </div>

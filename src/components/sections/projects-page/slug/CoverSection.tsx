@@ -14,7 +14,8 @@ interface CoverSectionProps {
 
 export default function CoverSection({ coverImage, title }: CoverSectionProps) {
   return (
-    <section className="w-full px-4 md:px-12 lg:px-16 max-w-[1600px] mx-auto mb-24">
+    // PERBAIKAN: Margin bawah disesuaikan untuk mobile (mb-16 md:mb-24)
+    <section className="w-full px-4 md:px-12 lg:px-16 max-w-[1600px] mx-auto mb-16 md:mb-24">
       
       {/* Technical Bounding Box: Bingkai luar yang kaku */}
       <div className="relative w-full bg-[#050505] border border-white/10 p-2 md:p-4 rounded-none group">
@@ -38,8 +39,9 @@ export default function CoverSection({ coverImage, title }: CoverSectionProps) {
           />
         </div>
 
-        {/* Label Metadata Resolusi ala Terminal (Disembunyikan di layar sangat kecil agar tidak menumpuk) */}
-        <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 bg-[#0a0a0e]/90 backdrop-blur-sm border border-white/10 px-3 py-1.5 text-[10px] font-mono text-gray-400 z-20 uppercase tracking-widest hidden sm:block shadow-xl">
+        {/* Label Metadata Resolusi ala Terminal */}
+        {/* PERBAIKAN: Hapus backdrop-blur-sm, ganti bg menjadi solid #050505, dan hilangkan shadow-xl */}
+        <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 bg-[#050505] border border-white/10 px-3 py-1.5 text-[10px] font-mono text-gray-400 z-20 uppercase tracking-widest hidden sm:block">
           SYS_IMG: HIGH_RES_RENDER
         </div>
 

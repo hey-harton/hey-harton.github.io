@@ -12,22 +12,22 @@ export default function ProjectsPage() {
   const projects = getAllProjects();
 
   return (
-    // PERBAIKAN UTAMA: 
-    // 1. Hapus "transform-gpu" dari <main> agar browser me-render scroll secara normal (tidak membebani VRAM GPU).
-    // 2. Ubah "overflow-hidden" menjadi "overflow-x-hidden" agar tidak mengunci perhitungan tinggi halaman saat di-scroll.
-    <main className="w-full flex flex-col min-h-screen relative overflow-x-hidden pb-0">
+    // PERBAIKAN: 
+    // 1. Mengubah <main> menjadi <div> karena tag <main> sudah terpasang di layout.tsx.
+    // 2. Menghapus overflow-x-hidden dan min-h-screen karena sudah ditangani layout global.
+    <div className="w-full flex flex-col relative">
       
       {/* Background Glow Effect */}
-      {/* transform-gpu hanya kita pertahankan pada elemen cahaya ini saja agar rendering blurnya yang diproses GPU, bukan seluruh halaman */}
-      <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-brand-green/10 blur-[120px] rounded-full pointer-events-none -z-10 transform-gpu"></div>
-      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-brand-blue/10 blur-[120px] rounded-full pointer-events-none -z-10 transform-gpu"></div>
+      {/* PERBAIKAN: Dimatikan di HP (hidden md:block) karena filter blur-[120px] sangat menyiksa GPU HP */}
+      <div className="hidden md:block absolute top-0 right-0 w-[600px] h-[600px] bg-brand-green/10 blur-[120px] rounded-full pointer-events-none z-0"></div>
+      <div className="hidden md:block absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-blue/10 blur-[120px] rounded-full pointer-events-none z-0"></div>
 
-      {/* Kontainer batasan dipindah ke dalam komponen header & grid */}
+      {/* Komponen Header */}
       <ProjectsHeader />
       
-      {/* Mengirim data Markdown ke dalam komponen Grid */}
+      {/* Komponen Grid dengan Data Markdown */}
       <ProjectsGrid projects={projects} />
 
-    </main>
+    </div>
   );
 }

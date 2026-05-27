@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import "@/components/style/global.css";
 
-// Import komponen Navbar dan Footer
+// Import komponen global
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import ScrollToTop from "@/components/ui/ScrollToTop"; // KUNCI: Import komponen ScrollToTop
 
 export const metadata: Metadata = {
   title: "Hartono Adji Susanto | Portfolio",
@@ -49,6 +50,9 @@ export default function RootLayout({
           </main>
 
           <Footer />
+          
+          {/* Eksekusi komponen ScrollToTop di level teratas */}
+          <ScrollToTop />
           
         </div>
 

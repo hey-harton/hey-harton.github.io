@@ -21,42 +21,46 @@ const InstagramIcon = ({ className }: { className?: string }) => (
 
 export default function ContactInfoSection() {
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-8 md:gap-10">
       
       <div className="border-b border-white/10 pb-4">
-        <h3 className="text-2xl font-bold text-white mb-2 uppercase tracking-tight">Kanal Komunikasi<span className="text-brand-green">_</span></h3>
-        <p className="text-gray-400 font-mono text-sm tracking-wide">Pilih protokol komunikasi yang tersedia di bawah.</p>
+        {/* PERBAIKAN: Ukuran font judul lebih dinamis */}
+        <h3 className="text-xl md:text-2xl font-bold text-white mb-2 uppercase tracking-tight">Kanal Komunikasi<span className="text-brand-green">_</span></h3>
+        <p className="text-gray-400 font-mono text-xs md:text-sm tracking-wide">Pilih protokol komunikasi yang tersedia di bawah.</p>
       </div>
 
       <div className="flex flex-col gap-4">
         {/* Email */}
-        <a href="mailto:contact@htn.com" className="group flex items-center gap-5 p-4 bg-[#050505] border border-white/10 hover:border-brand-green/50 transition-all rounded-none relative overflow-hidden">
+        {/* PERBAIKAN: Padding responsif dan penambahan min-w-0 untuk menghindari overflow teks */}
+        <a href="mailto:hartonoadjisusanto@gmail.com" className="group flex items-center gap-4 md:gap-5 p-3 md:p-4 bg-[#050505] border border-white/10 hover:border-brand-green/50 transition-all rounded-none relative overflow-hidden">
           {/* Garis Aksen Kiri */}
           <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-transparent group-hover:bg-brand-green transition-colors"></div>
           
-          <div className="p-3 bg-[#0a0a0e] text-gray-400 group-hover:text-brand-green transition-colors border border-white/5">
-            <Mail size={24} />
+          <div className="p-2 md:p-3 bg-[#0a0a0e] text-gray-400 group-hover:text-brand-green transition-colors border border-white/5 shrink-0">
+            <Mail className="w-5 h-5 md:w-6 md:h-6" />
           </div>
-          <div>
-            <span className="block text-[10px] text-gray-500 uppercase tracking-widest mb-1 font-mono">PROTOCOL: SMTP (EMAIL)</span>
-            <span className="text-white font-mono font-semibold">hartonoadjisusanto@gmail.com</span>
+          
+          {/* min-w-0 penting agar truncate berfungsi di flexbox */}
+          <div className="min-w-0">
+            <span className="block text-[9px] md:text-[10px] text-gray-500 uppercase tracking-widest mb-1 font-mono truncate">PROTOCOL: SMTP (EMAIL)</span>
+            <span className="text-white font-mono font-semibold text-xs md:text-sm truncate block">hartonoadjisusanto@gmail.com</span>
           </div>
         </a>
       </div>
 
       {/* Social Links */}
-      <div className="pt-4">
-        <span className="block text-[10px] text-gray-500 uppercase tracking-widest mb-4 font-mono">/ EXTERNAL_DIRECTORIES</span>
-        <div className="flex gap-4">
-          <a href="#" className="p-4 bg-[#050505] border border-white/10 rounded-none hover:border-brand-green text-gray-400 hover:text-brand-green transition-all group relative">
-            <GithubIcon className="w-6 h-6 transition-colors" />
+      <div className="pt-2 md:pt-4">
+        <span className="block text-[9px] md:text-[10px] text-gray-500 uppercase tracking-widest mb-4 font-mono">/ EXTERNAL_DIRECTORIES</span>
+        {/* PERBAIKAN: Gap dan padding ikon disesuaikan untuk HP */}
+        <div className="flex gap-3 md:gap-4">
+          <a href="#" aria-label="GitHub Profile" className="p-3 md:p-4 bg-[#050505] border border-white/10 rounded-none hover:border-brand-green text-gray-400 hover:text-brand-green transition-all group relative">
+            <GithubIcon className="w-5 h-5 md:w-6 md:h-6 transition-colors" />
           </a>
-          <a href="#" className="p-4 bg-[#050505] border border-white/10 rounded-none hover:border-brand-green text-gray-400 hover:text-brand-green transition-all group relative">
-            <LinkedinIcon className="w-6 h-6 transition-colors" />
+          <a href="#" aria-label="LinkedIn Profile" className="p-3 md:p-4 bg-[#050505] border border-white/10 rounded-none hover:border-brand-green text-gray-400 hover:text-brand-green transition-all group relative">
+            <LinkedinIcon className="w-5 h-5 md:w-6 md:h-6 transition-colors" />
           </a>
-          {/* Penambahan Ikon Instagram */}
-          <a href="#" className="p-4 bg-[#050505] border border-white/10 rounded-none hover:border-brand-green text-gray-400 hover:text-brand-green transition-all group relative">
-            <InstagramIcon className="w-6 h-6 transition-colors" />
+          <a href="#" aria-label="Instagram Profile" className="p-3 md:p-4 bg-[#050505] border border-white/10 rounded-none hover:border-brand-green text-gray-400 hover:text-brand-green transition-all group relative">
+            <InstagramIcon className="w-5 h-5 md:w-6 md:h-6 transition-colors" />
           </a>
         </div>
       </div>

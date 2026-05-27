@@ -34,38 +34,38 @@ export default function HeroSection({ title, role, year, liveUrl, githubUrl, sta
     "bg-gray-600";
 
   return (
-    // Memastikan section menempel ke atas navbar dan memiliki latar belakang transparan
-    <section className="relative w-full border-b border-white/10 bg-transparent overflow-hidden pt-32 md:pt-40 pb-20 md:pb-24 !mt-0">
+    // PERBAIKAN: Hapus !mt-0, sesuaikan padding, dan hapus grid background lokal
+    <section className="relative w-full border-b border-white/10 bg-transparent overflow-hidden pt-28 md:pt-40 pb-16 md:pb-24">
       
-      {/* Latar Belakang Grid Teknis (Opasitas 0.08) - Akan merambat dari balik Navbar */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:linear-gradient(to_bottom,white,transparent)] pointer-events-none"></div>
+      {/* Grid lokal dihapus agar tidak bertumpuk */}
 
       <div className="w-full px-6 md:px-12 lg:px-16 max-w-[1600px] mx-auto relative z-10">
         
         {/* Navigasi "Kembali" Bergaya Direktori Konsol */}
         <Link 
           href="/projects" 
-          className="group inline-flex items-center gap-3 text-[10px] font-mono font-bold text-gray-500 hover:text-white transition-colors mb-12 uppercase tracking-widest border border-white/10 bg-[#050505] px-4 py-2 rounded-none"
+          className="group inline-flex items-center gap-3 text-[10px] font-mono font-bold text-gray-500 hover:text-white transition-colors mb-10 md:mb-12 uppercase tracking-widest border border-white/10 bg-[#050505] px-4 py-3 md:py-2 rounded-none"
         >
           <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> 
           <span>CMD: RETURN_TO_DIRECTORY</span>
         </Link>
 
         {/* Panel Info Utama dengan Garis Tepi Kiri ala Blueprint */}
-        <div className="relative border-l border-white/10 pl-6 md:pl-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+        <div className="relative border-l border-white/10 pl-6 md:pl-10 grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-12 items-end">
           
           {/* Crosshairs Pengunci Garis Vertikal */}
           <Crosshair className="absolute -top-[7px] -left-[7.5px] text-brand-green z-20" />
           <Crosshair className="absolute -bottom-[7px] -left-[7.5px] text-brand-green z-20" />
 
           {/* Bagian Judul dan Metadata */}
-          <div className="lg:col-span-8 flex flex-col items-start pt-4">
-            <h1 className="text-4xl md:text-5xl lg:text-[4.5rem] font-bold text-white tracking-tight leading-[1.05] mb-12 uppercase">
+          <div className="lg:col-span-8 flex flex-col items-start pt-2 md:pt-4">
+            {/* PERBAIKAN: Menambahkan break-words dan text-3xl untuk HP agar judul tidak jebol */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[4.5rem] font-bold text-white tracking-tight leading-[1.05] mb-8 md:mb-12 uppercase break-words w-full">
               {title}<span className="text-brand-green">_</span>
             </h1>
             
             {/* Metadata Proyek Bergaya Log Data */}
-            <div className="flex flex-wrap gap-x-12 gap-y-8 text-[10px] font-mono uppercase tracking-widest text-gray-500 font-semibold mb-2 lg:mb-0 w-full border-t border-white/10 pt-6">
+            <div className="flex flex-wrap gap-x-8 md:gap-x-12 gap-y-6 md:gap-y-8 text-[9px] md:text-[10px] font-mono uppercase tracking-widest text-gray-500 font-semibold mb-2 lg:mb-0 w-full border-t border-white/10 pt-6">
               <div className="flex flex-col">
                 <span className="text-gray-600 mb-2 border-b border-white/5 pb-1 w-max">ROLE_ASSIGNED</span>
                 <span className="text-gray-300">{role}</span>
@@ -79,7 +79,6 @@ export default function HeroSection({ title, role, year, liveUrl, githubUrl, sta
               <div className="flex flex-col">
                 <span className="text-gray-600 mb-2 border-b border-white/5 pb-1 w-max">SYS_STATUS</span>
                 <div className="flex items-center gap-2">
-                  {/* Titik indikator dibuat kotak kaku tanpa efek membulat */}
                   <div className={`w-2 h-2 rounded-none ${statusColor} ${currentStatus === "Idle" ? "" : "animate-pulse"}`}></div>
                   <span className="text-white">{currentStatus}</span>
                 </div>
@@ -88,28 +87,28 @@ export default function HeroSection({ title, role, year, liveUrl, githubUrl, sta
           </div>
 
           {/* Bagian Tombol Aksi Kanan (Action Pane) */}
-          <div className="lg:col-span-4 flex flex-col gap-4 pb-1">
+          <div className="lg:col-span-4 flex flex-col gap-4 pb-1 w-full mt-4 lg:mt-0">
             {liveUrl && liveUrl !== "#" ? (
-              <a href={liveUrl} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between w-full bg-brand-green text-[#050505] px-6 py-4 font-mono text-[10px] font-bold tracking-widest uppercase hover:bg-[#12d192] transition-colors rounded-none">
+              <a href={liveUrl} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between w-full bg-brand-green text-[#050505] px-6 py-4 font-mono text-[9px] md:text-[10px] font-bold tracking-widest uppercase hover:bg-[#12d192] transition-colors rounded-none">
                 <span>EXECUTE_LIVE_PLATFORM</span>
                 <ExternalLink size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </a>
             ) : (
-              <div className="flex items-center justify-between w-full bg-white/5 text-gray-600 px-6 py-4 font-mono text-[10px] font-bold tracking-widest uppercase cursor-not-allowed border border-white/5 rounded-none">
+              <div className="flex items-center justify-between w-full bg-white/5 text-gray-600 px-6 py-4 font-mono text-[9px] md:text-[10px] font-bold tracking-widest uppercase cursor-not-allowed border border-white/5 rounded-none">
                 <span>PLATFORM_UNAVAILABLE</span>
                 <ExternalLink size={16} className="opacity-30" />
               </div>
             )}
 
             {githubUrl && githubUrl !== "#" ? (
-              <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between w-full bg-[#0a0a0e] border border-white/20 text-white px-6 py-4 font-mono text-[10px] font-bold tracking-widest uppercase hover:border-brand-green hover:text-brand-green transition-colors rounded-none">
+              <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between w-full bg-[#0a0a0e] border border-white/20 text-white px-6 py-4 font-mono text-[9px] md:text-[10px] font-bold tracking-widest uppercase hover:border-brand-green hover:text-brand-green transition-colors rounded-none">
                 <span>ACCESS_SOURCE_CODE</span>
-                <GithubIcon className="w-5 h-5" />
+                <GithubIcon className="w-4 h-4 md:w-5 md:h-5" />
               </a>
             ) : (
-              <div className="flex items-center justify-between w-full bg-[#050505] border border-white/10 text-gray-700 px-6 py-4 font-mono text-[10px] font-bold tracking-widest uppercase cursor-not-allowed rounded-none">
+              <div className="flex items-center justify-between w-full bg-[#050505] border border-white/10 text-gray-700 px-6 py-4 font-mono text-[9px] md:text-[10px] font-bold tracking-widest uppercase cursor-not-allowed rounded-none">
                 <span>PRIVATE_REPOSITORY</span>
-                <GithubIcon className="w-5 h-5 opacity-30" />
+                <GithubIcon className="w-4 h-4 md:w-5 md:h-5 opacity-30" />
               </div>
             )}
           </div>

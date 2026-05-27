@@ -10,17 +10,18 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    // Menambahkan pb-32 agar memberikan ruang napas antara komponen terakhir dan Footer
-    <main className="w-full flex flex-col min-h-screen relative overflow-x-hidden pb-32">
+    // PERBAIKAN: Mengubah <main> menjadi <div>, menghapus min-h-screen & overflow-x-hidden
+    <div className="w-full flex flex-col relative pb-20 md:pb-32">
       
-      {/* Latar Belakang Cahaya (Glow Effect) warna biru khas halaman About */}
-      <div className="absolute top-0 left-1/4 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-brand-blue/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+      {/* PERBAIKAN: Efek blur-[120px] diganti dengan radial-gradient yang jauh lebih ringan untuk GPU */}
+      {/* Disembunyikan di HP (hidden md:block) agar fokus rendering sepenuhnya pada teks dan grid */}
+      <div className="hidden md:block absolute top-0 left-1/4 w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(59,130,246,0.12)_0%,transparent_60%)] rounded-full pointer-events-none z-0"></div>
 
       <HeroSection />
       <MissionSection />
       <StatsSection />
       <ValuesSection />
       
-    </main>
+    </div>
   );
 }

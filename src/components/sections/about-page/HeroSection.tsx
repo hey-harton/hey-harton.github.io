@@ -12,12 +12,12 @@ const Crosshair = ({ className }: { className?: string }) => (
 
 export default function HeroSection() {
   return (
-    // 1. KUNCI INTEGRASI: Dibungkus dengan tema gelap IBM Carbon (G100)
+    // KUNCI INTEGRASI: Dibungkus dengan tema gelap IBM Carbon (G100)
     <Theme theme="g100">
-      <section className="relative w-full border-b border-white/10 bg-transparent overflow-hidden pt-28 md:pt-40 pb-16 md:pb-24 !mt-0">
+      {/* PERBAIKAN: !mt-0 dihapus karena sudah tidak diperlukan */}
+      <section className="relative w-full border-b border-white/10 bg-transparent overflow-hidden pt-28 md:pt-40 pb-16 md:pb-24">
         
-        {/* KUNCI PERFORMA REDMI 10: Grid dinonaktifkan di mobile (hidden md:block) agar tidak memicu overdraw/repaint lag */}
-        <div className="hidden md:block absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:linear-gradient(to_bottom,white,transparent)] pointer-events-none"></div>
+        {/* PERBAIKAN: Grid lokal DIHAPUS TOTAL agar tidak bertumpuk (double-render) dengan grid global dari layout.tsx saat dibuka di laptop */}
 
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 relative z-10">
           

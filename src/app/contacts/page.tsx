@@ -10,18 +10,18 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    // PERBAIKAN 1: Mengubah overflow-hidden menjadi overflow-x-hidden agar form di sisi kanan tidak terpotong (clipping)
-    <main className="w-full min-h-screen flex flex-col relative overflow-x-hidden pb-32">
+    // PERBAIKAN: Mengubah <main> menjadi <div>, menghapus min-h-screen & overflow-x-hidden (sudah diatur layout.tsx)
+    <div className="w-full flex flex-col relative pb-20 md:pb-32">
       
-      {/* Background Glow: Warnanya diubah dari biru (rgba 59,130,246) menjadi hijau (rgba 16,185,129) agar senada dengan form */}
-      <div className="absolute top-[20%] left-[50%] -translate-x-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(16,185,129,0.08)_0%,transparent_60%)] rounded-full pointer-events-none -z-10"></div>
+      {/* Background Glow: Disembunyikan di HP (hidden md:block) agar animasi form tetap mulus */}
+      <div className="hidden md:block absolute top-[20%] left-[50%] -translate-x-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(16,185,129,0.08)_0%,transparent_60%)] rounded-full pointer-events-none z-0"></div>
 
       <HeroSection />
 
-      {/* PERBAIKAN 2: max-w-[1200px] dilebarkan menjadi max-w-[1600px] (Seragam dengan halaman Enterprise lainnya) */}
-      <section className="w-full px-6 md:px-12 lg:px-16 max-w-[1600px] mx-auto relative z-10 pt-8">
+      {/* PERBAIKAN: max-w-[1600px] dipertahankan, margin disesuaikan */}
+      <section className="w-full px-6 md:px-12 lg:px-16 max-w-[1600px] mx-auto relative z-10 pt-4 md:pt-8">
         
-        {/* Jarak antar kolom (gap) disesuaikan agar panel kiri dan kanan punya ruang bernapas */}
+        {/* Jarak antar kolom (gap) disesuaikan agar panel kiri dan kanan punya ruang bernapas di semua layar */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
           
           {/* Kolom Kiri: Informasi (Rasio 5/12) */}
@@ -30,13 +30,14 @@ export default function ContactPage() {
           </div>
 
           {/* Kolom Kanan: Formulir (Rasio 7/12) */}
-          <div className="lg:col-span-7 w-full">
+          {/* Tambahan mt-4 lg:mt-0 untuk memberi jarak ekstra di HP jika panel atas bawah bertumpuk */}
+          <div className="lg:col-span-7 w-full mt-4 lg:mt-0">
             <ContactFormSection />
           </div>
 
         </div>
       </section>
 
-    </main>
+    </div>
   );
 }

@@ -33,12 +33,13 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
 
   return (
     // PERBAIKAN: 
-    // 1. Hapus pt-20 lg:pt-24 agar HeroSection naik menyentuh ujung atas layar.
-    // 2. Hapus transform-gpu dari kontainer utama agar scroll tetap mulus dan ringan.
-    <main className="w-full min-h-screen pb-20 relative overflow-x-hidden">
+    // 1. Mengubah <main> menjadi <div> karena tag <main> sudah ada di layout global.
+    // 2. Menghapus min-h-screen dan overflow-x-hidden agar scroll native bekerja sempurna.
+    <div className="w-full relative flex flex-col pb-20">
       
-      {/* Background Glow (Dioptimalkan, transform-gpu hanya diletakkan pada elemen cahaya ini saja) */}
-      <div className="absolute top-0 left-1/4 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-[radial-gradient(circle,rgba(59,130,246,0.15)_0%,transparent_60%)] rounded-full pointer-events-none -z-10 transform-gpu"></div>
+      {/* Background Glow */}
+      {/* PERBAIKAN: Dimatikan di HP (hidden md:block) dan transform-gpu dihapus untuk menyelamatkan FPS */}
+      <div className="hidden md:block absolute top-0 left-1/4 w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(59,130,246,0.15)_0%,transparent_60%)] rounded-full pointer-events-none z-0"></div>
       
       <HeroSection 
         title={project.title}
@@ -78,6 +79,6 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
         updates={frontmatter.updates}
       />
 
-    </main>
+    </div>
   );
 }

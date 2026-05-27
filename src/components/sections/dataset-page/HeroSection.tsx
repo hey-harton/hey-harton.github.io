@@ -9,11 +9,10 @@ const Crosshair = ({ className }: { className?: string }) => (
 
 export default function HeroSection() {
   return (
-    // Struktur luar disamakan persis dengan ProjectsHeader dan ExperienceHeader (pt-32, border-b, transparan)
-    <section className="relative w-full border-b border-white/10 bg-transparent overflow-hidden pt-32 md:pt-40 pb-20 md:pb-24 !mt-0">
+    // PERBAIKAN: Hapus !mt-0, sesuaikan padding atas, pertahankan bg-transparent
+    <section className="relative w-full border-b border-white/10 bg-transparent overflow-hidden pt-28 md:pt-40 pb-16 md:pb-24">
       
-      {/* Latar Belakang Grid Teknis (Opasitas 0.08) - Merambat dari balik Navbar */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:linear-gradient(to_bottom,white,transparent)] pointer-events-none"></div>
+      {/* Grid lokal dihapus agar tidak bentrok dengan layout.tsx */}
 
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 relative z-10 flex flex-col xl:flex-row xl:items-end justify-between gap-12">
         
@@ -26,20 +25,21 @@ export default function HeroSection() {
           <div className="flex flex-col items-start pt-4">
             
             {/* Label Terminal Path */}
-            <div className="flex items-center gap-3 text-brand-blue text-xs font-mono uppercase tracking-widest mb-8">
-              <Database size={14} className="animate-pulse" />
+            <div className="flex items-center gap-3 text-brand-blue text-[10px] md:text-xs font-mono uppercase tracking-widest mb-6 md:mb-8">
+              {/* PERBAIKAN: Matikan animasi pulse di HP */}
+              <Database size={14} className="md:animate-pulse" />
               <span>&gt; DIRECTORY: /DATASETS/OPEN_REPOSITORIES</span>
             </div>
             
-            {/* Gradien dihapus, diganti warna solid tegas */}
-            <h1 className="text-5xl md:text-6xl lg:text-[5.5rem] font-bold text-white tracking-tight leading-[1.05] mb-8 uppercase">
+            {/* PERBAIKAN: Ukuran font responsif dan penambahan break-words untuk mobile */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-bold text-white tracking-tight leading-[1.05] mb-6 md:mb-8 uppercase break-words w-full">
               Dataset Kurasi <br className="hidden md:block" />
               <span className="text-brand-blue">Riset & Analitik.</span>
-              <span className="animate-pulse text-white">_</span>
+              <span className="md:animate-pulse text-white">_</span>
             </h1>
             
-            {/* Teks diterjemahkan dengan font-mono */}
-            <p className="text-gray-400 text-lg md:text-xl font-mono font-light leading-relaxed max-w-2xl text-left">
+            {/* PERBAIKAN: Font size disesuaikan agar proporsional di layar kecil */}
+            <p className="text-gray-400 text-sm md:text-lg lg:text-xl font-mono font-light leading-relaxed max-w-2xl text-left">
               Jelajahi dan unduh dataset berkualitas tinggi yang mencakup informatika medis, telemetri jaringan, dan pemodelan machine learning.
             </p>
 
@@ -47,21 +47,22 @@ export default function HeroSection() {
         </div>
 
         {/* Global Stats Kanan ala Panel Metrik Sistem */}
-        <div className="flex flex-row xl:flex-col gap-10 xl:gap-12 bg-[#050505] border border-white/10 p-6 md:p-8 xl:min-w-[300px] rounded-none relative">
+        {/* PERBAIKAN: Lebar penuh di HP, flex-col untuk layar sangat kecil */}
+        <div className="flex flex-col sm:flex-row xl:flex-col gap-8 xl:gap-12 bg-[#050505] border border-white/10 p-6 md:p-8 w-full xl:w-auto xl:min-w-[300px] rounded-none relative">
           
           {/* Garis Aksen Indikator */}
           <div className="absolute top-0 left-0 w-full h-[2px] bg-brand-blue"></div>
 
-          <div className="flex flex-col">
-            <span className="text-4xl lg:text-5xl font-mono font-bold text-white mb-2">04</span>
-            <span className="text-[10px] text-gray-500 uppercase tracking-widest font-mono border-b border-white/5 pb-2">
+          <div className="flex flex-col flex-1">
+            <span className="text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-white mb-2">04</span>
+            <span className="text-[9px] md:text-[10px] text-gray-500 uppercase tracking-widest font-mono border-b border-white/5 pb-2">
               SYS_METRIC: TOTAL_REPOS
             </span>
           </div>
           
-          <div className="flex flex-col">
-            <span className="text-4xl lg:text-5xl font-mono font-bold text-white mb-2">2.3M+</span>
-            <span className="text-[10px] text-gray-500 uppercase tracking-widest font-mono border-b border-white/5 pb-2">
+          <div className="flex flex-col flex-1">
+            <span className="text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-white mb-2">2.3M+</span>
+            <span className="text-[9px] md:text-[10px] text-gray-500 uppercase tracking-widest font-mono border-b border-white/5 pb-2">
               SYS_METRIC: DATA_RECORDS
             </span>
           </div>

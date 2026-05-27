@@ -9,11 +9,11 @@ const Crosshair = ({ className }: { className?: string }) => (
 
 export default function ExperienceHeader() {
   return (
-    // PERBAIKAN: Hapus transform-gpu, sesuaikan pt-28 untuk mobile agar tidak tertutup Navbar
-    <section className="relative w-full border-b border-white/10 bg-transparent overflow-hidden pt-28 md:pt-40 pb-16 md:pb-24 !mt-0">
+    // PERBAIKAN: bg-transparent dipertahankan agar grid global dari layout.tsx menembus
+    // !mt-0 dihapus karena tidak terlalu diperlukan jika struktur layout-nya sudah benar
+    <section className="relative w-full border-b border-white/10 bg-transparent overflow-hidden pt-28 md:pt-40 pb-16 md:pb-24">
       
-      {/* Latar Belakang Grid Teknis (Opasitas 0.08) - Akan merambat dari balik Navbar */}
-      <div className="absolute inset-0 pointer-events-none -z-10 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem] md:[mask-image:linear-gradient(to_bottom,white,transparent)] transform-gpu will-change-transform"></div>
+      {/* Grid lokal dan kelas transform-gpu DIHAPUS agar tidak bertumpuk dengan layout.tsx */}
 
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 relative z-10">
         
@@ -28,7 +28,8 @@ export default function ExperienceHeader() {
             
             {/* Label Atas bergaya Terminal Path (Ukuran font responsif) */}
             <div className="flex items-center gap-3 text-brand-blue text-[10px] md:text-xs font-mono uppercase tracking-widest mb-6 md:mb-8">
-              <Cpu size={14} className="animate-pulse" />
+              {/* PERBAIKAN: animate-pulse dimatikan di HP (md:animate-pulse) agar hemat resource */}
+              <Cpu size={14} className="md:animate-pulse" />
               <span>&gt; DIRECTORY: /EXPERIENCE/TRACK_RECORD</span>
             </div>
             
@@ -36,7 +37,8 @@ export default function ExperienceHeader() {
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-bold text-white tracking-tight leading-[1.05] mb-6 md:mb-8 max-w-4xl uppercase break-words">
               Arsitektur Operasional <br className="hidden md:block"/>
               <span className="text-brand-blue">Tangguh.</span>
-              <span className="animate-pulse text-white">_</span>
+              {/* PERBAIKAN: animate-pulse dimatikan di HP */}
+              <span className="md:animate-pulse text-white">_</span>
             </h1>
             
             {/* Deskripsi: Font lebih kecil di mobile agar mudah dibaca */}
