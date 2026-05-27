@@ -30,8 +30,8 @@ export default function MissionSection() {
             </h2>
           </div>
 
-          {/* Kolom Kanan: Teks Deskripsi (Rata kiri, bukan justify, dan menggunakan mono-space agar teknis) */}
-          <div className="lg:col-span-7 flex flex-col gap-8 text-base md:text-lg text-gray-400 font-mono font-light leading-relaxed text-left">
+          {/* Kolom Kanan: Teks Deskripsi (Diubah menjadi text-justify sesuai permintaan) */}
+          <div className="lg:col-span-7 flex flex-col gap-8 text-base md:text-lg text-gray-400 font-mono font-light leading-relaxed text-justify">
             <p>
               Fondasi profesional dibangun di atas pemahaman mendalam mengenai arsitektur jaringan fisik dan logika operasional <em>cloud</em>. Mengawali rekam jejak dari kompetensi Teknik Komputer dan Jaringan (TKJ), fokus utama berakar pada penyediaan interkoneksi skala perusahaan yang tangguh, menguasai manajemen multi-vendor mulai dari ekosistem Cisco, MikroTik, Juniper, hingga sistem keamanan tingkat lanjut.
             </p>
@@ -45,7 +45,7 @@ export default function MissionSection() {
             </p>
             
             <p>
-              Dimensi kepemimpinan di luar lingkup teknis diwujudkan melalui peran sebagai ketua komunitas akademik <span className="inline-block bg-[#050505] border border-white/20 px-2 py-0.5 text-white font-bold tracking-widest mx-1 text-sm rounded-none">DATASEA</span>. Mengorkestrasi sinergi lintas divisi mulai dari manajemen inti, infrastruktur IT, hingga ekonomi kreatif, guna menciptakan ekosistem repositori digital dan portal arsip terpusat yang berdampak nyata bagi skalabilitas organisasi.
+              Dimensi kepemimpinan di luar lingkup teknis diwujudkan melalui peran sebagai ketua komunitas akademik <span className="inline-block bg-[#050505] border border-white/20 px-2 py-0.5 text-white font-bold tracking-widest mx-1 text-sm rounded-none">HIMADISSA</span>. Mengorkestrasi sinergi lintas divisi mulai dari manajemen inti, infrastruktur IT, hingga ekonomi kreatif, guna menciptakan ekosistem repositori digital dan portal arsip terpusat yang berdampak nyata bagi skalabilitas organisasi.
             </p>
           </div>
 

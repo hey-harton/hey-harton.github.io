@@ -16,7 +16,6 @@ const Crosshair = ({ className }: { className?: string }) => (
 
 export default function HeroSection() {
   return (
-    // PERBAIKAN: Hapus min-h dan padding vertikal dari section utama. Gunakan h-screen agar memenuhi layar penuh dari atas tanpa sisa.
     <section id="home" className="relative w-full border-b border-white/10 bg-transparent overflow-hidden transform-gpu h-screen flex items-center">
       
       {/* Latar Belakang Grid Teknis */}
@@ -93,12 +92,13 @@ export default function HeroSection() {
             {/* Container Gambar */}
             <div className="absolute inset-4 sm:inset-6 lg:inset-8 border border-white/10 bg-[#050505] overflow-hidden">
                <Image 
-                 src="/profile.png" 
+                 src="/profil/photo.jpg" 
                  alt="Hartono Adji Susanto" 
                  fill 
                  priority
                  sizes="(max-width: 768px) 100vw, 50vw"
-                 className="object-cover object-bottom grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-500" 
+                 // PERBAIKAN: grayscale dan opacity-80 dihapus. Ditambahkan hover:scale-105 untuk interaksi ringan
+                 className="object-cover object-bottom transition-transform duration-700 hover:scale-105" 
                />
             </div>
             

@@ -9,13 +9,15 @@ const Crosshair = ({ className }: { className?: string }) => (
 
 export default function HeroSection() {
   return (
-    // Struktur luar disamakan persis dengan header halaman lain agar menyatu dengan Navbar
-    <section className="relative w-full border-b border-white/10 bg-transparent overflow-hidden pt-32 md:pt-40 pb-20 md:pb-24 !mt-0">
+    // PERBAIKAN: Menambahkan `min-h-[85vh] lg:min-h-screen flex flex-col justify-center` 
+    // agar tinggi seksi ini menyesuaikan dengan tinggi layar laptop dan kontennya berada di tengah.
+    <section className="relative w-full min-h-[85vh] lg:min-h-screen flex flex-col justify-center border-b border-white/10 bg-transparent overflow-hidden pt-32 pb-20 !mt-0">
       
       {/* Latar Belakang Grid Teknis (Opasitas 0.08) - Merambat dari balik Navbar */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:linear-gradient(to_bottom,white,transparent)] pointer-events-none"></div>
 
-      <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 relative z-10">
+      {/* Tambahan w-full agar kontainer flex tidak menyusut */}
+      <div className="max-w-[1600px] w-full mx-auto px-6 md:px-12 lg:px-16 relative z-10">
         
         {/* Panel Judul dengan Garis Tepi Kiri ala Blueprint */}
         <div className="relative border-l border-white/10 pl-6 md:pl-10">
