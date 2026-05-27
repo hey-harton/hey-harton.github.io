@@ -20,7 +20,7 @@ export default function HeroSection() {
     <section id="home" className="relative w-full border-b border-white/10 bg-transparent overflow-hidden min-h-screen flex items-center pt-24 md:pt-28 pb-16 md:pb-0">
       
       {/* Latar Belakang Grid Teknis */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:linear-gradient(to_bottom,white,transparent)] pointer-events-none"></div>
+      <div className="absolute inset-0 pointer-events-none -z-10 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem] md:[mask-image:linear-gradient(to_bottom,white,transparent)] transform-gpu will-change-transform"></div>
 
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 flex flex-col-reverse lg:flex-row items-center justify-between relative z-10 w-full gap-12 lg:gap-8">
         
