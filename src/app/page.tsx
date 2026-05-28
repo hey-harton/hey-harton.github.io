@@ -1,10 +1,25 @@
+import { redirect } from "next/navigation";
 import HeroSection from "@/components/sections/home-page/HeroSection";
 import FeaturedProjects from "@/components/sections/home-page/FeaturedProjects";
 import TechStack from "@/components/sections/home-page/TechStack";
 import HomeCTA from "@/components/sections/home-page/HomeCTA";
-import { getAllProjects } from "@/utils/mdx";
+import { getAllProjects } from "@/utils/mdx"; // Pastikan path utils atau lib sesuai dengan folder milikmu
+
 export default function Home() {
-  // Mengeksekusi pembacaan file Markdown dari server
+  // =================================================================
+  // SAKLAR UTAMA (MASTER SWITCH)
+  // Ubah ke 'false' jika website sudah siap dirilis ke publik
+  // =================================================================
+  const isUnderConstruction = true;
+
+  if (isUnderConstruction) {
+    // Alihkan paksa ke rute /coming-soon
+    // Metode ini sangat aman untuk GitHub Pages (Static Export)
+    // dan akan memicu Navbar/Footer untuk otomatis menghilang.
+    redirect("/coming-soon");
+  }
+
+  // Pengeksekusian di bawah ini HANYA terjadi jika saklar bernilai 'false'
   const allProjects = getAllProjects();
 
   return (
