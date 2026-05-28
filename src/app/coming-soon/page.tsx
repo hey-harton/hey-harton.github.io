@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect } from "react";
+// OPTIMASI: Tambahkan useMemo dari react
+import { useState, useEffect, useMemo } from "react";
 import BackgroundEffects from "@/components/sections/coming-soon-page/BackgroundEffects";
 import TopBar from "@/components/sections/coming-soon-page/TopBar";
 import BottomBar from "@/components/sections/coming-soon-page/BottomBar";
@@ -12,7 +13,7 @@ export default function ComingSoonPage() {
   const [commits, setCommits] = useState<any[]>([]);
   const [loadingCommits, setLoadingCommits] = useState(true);
 
-  // Kalkulasi Waktu Pengembangan
+  // 1. Kalkulasi Waktu Pengembangan (Berjalan setiap detik)
   useEffect(() => {
     const startDate = new Date("2026-05-28T00:00:00").getTime();
 
@@ -31,7 +32,7 @@ export default function ComingSoonPage() {
     return () => clearInterval(timer);
   }, []);
 
-  // Ambil Data Commit dari GitHub
+  // 2. Ambil Data Commit dari GitHub (Berjalan sekali saat halaman dimuat)
   useEffect(() => {
     const fetchLatestCommits = async () => {
       try {
@@ -66,17 +67,37 @@ export default function ComingSoonPage() {
     fetchLatestCommits();
   }, []);
 
+  // =====================================================================
+  // OPTIMASI LEVEL CPU (REACT MEMOIZATION)
+  // Membekukan komponen agar tidak ikut berkedip/dirender ulang setiap detik
+  // =====================================================================
+  const memoizedBackground = useMemo(() => <BackgroundEffects />, []);
+  const memoizedTopBar = useMemo(() => <TopBar />, []);
+  const memoizedBottomBar = useMemo(() => <BottomBar />, []);
+  
+  // Panel Kanan HANYA akan dirender ulang jika data commit selesai di-fetch.
+  // Detikan waktu tidak akan mempengaruhinya lagi.
+  const memoizedRightPanel = useMemo(
+    () => <RightPanel commits={commits} loadingCommits={loadingCommits} />,
+    [commits, loadingCommits]
+  );
+
   return (
-    <div className="w-full min-h-[100dvh] lg:h-[100dvh] flex flex-col bg-[#050505] relative lg:overflow-hidden">
-      <BackgroundEffects />
-      <TopBar />
+    // OPTIMASI CSS: Tambahkan overscroll-none untuk mematikan efek pantulan lentur (bounce) bawaan browser HP
+    <div className="w-full min-h-[100dvh] lg:h-[100dvh] flex flex-col bg-[#050505] relative lg:overflow-hidden overscroll-none">
       
-      <main className="flex-1 grid grid-cols-1 lg:grid-cols-12 relative z-10 overflow-hidden">
+      {/* Merender komponen yang sudah dibekukan */}
+      {memoizedBackground}
+      {memoizedTopBar}
+      
+      <main className="flex-1 grid grid-cols-1 lg:grid-cols-12 relative z-10 overflow-hidden transform-gpu">
+        {/* LeftPanel tidak dibekukan karena dia BUTUH pembaruan angka detik (uptime) secara real-time */}
         <LeftPanel uptime={uptime} />
-        <RightPanel commits={commits} loadingCommits={loadingCommits} />
+        
+        {memoizedRightPanel}
       </main>
 
-      <BottomBar />
+      {memoizedBottomBar}
     </div>
   );
 }
