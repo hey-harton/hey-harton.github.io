@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portofolio Profesional - Hartono Adji Susanto
 
-## Getting Started
+Portofolio interaktif modern yang dirancang untuk menampilkan keahlian, pengalaman, sertifikasi, serta proyek di bidang **Enterprise Networking**, **Cloud Architecture**, dan **Data Science**.
 
-First, run the development server:
+Aplikasi ini dibangun menggunakan **Next.js 16**, **React 19**, dan **Tailwind CSS v4**, dengan integrasi desain industri dari **IBM Carbon Design System**.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🚀 Fitur Utama
+
+- **Maintenance Mode / Coming Soon**: Dilengkapi dengan penghitung waktu pengerjaan (*development uptime*) serta penarikan data commit secara waktu nyata (*real-time*) langsung dari API GitHub.
+- **Direktori Proyek Berbasis MDX**: Mem-parsing konten proyek secara dinamis dari file Markdown di folder `src/content/projects/` menggunakan `next-mdx-remote` dan `gray-matter`.
+- **Katalog Sertifikasi**: Tampilan grid responsif untuk sertifikasi industri di bidang Jaringan (Cisco, MikroTik), Keamanan (Palo Alto), Cloud (AWS), dan Data Science (IBM).
+- **Galeri Dataset**: Daftar dataset terkurasi lengkap dengan informasi ukuran, catatan record, dan format file (CSV, JSON, Excel).
+- **Desain Grid & Glow Teoretis**: Tampilan bertema gelap (*dark mode*) minimalis dengan pola garis grid arsitektural dan efek bias cahaya (*radial glow*) yang dioptimalkan untuk performa seluler (GPU-friendly).
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework & Core**: Next.js 16.2 (App Router), React 19.2, TypeScript 5
+- **Styling**: Tailwind CSS v4, `@tailwindcss/typography`
+- **UI Components & Icons**: `@carbon/react` (IBM Design), `lucide-react`, `@carbon/icons-react`
+- **Data & Content Parsing**: `gray-matter`, `next-mdx-remote`
+
+---
+
+## 📂 Struktur Folder Proyek
+
+```text
+my-portofolio/
+├── .agents/               # Aturan dan skill khusus AI Assistant
+├── public/                # Aset statis (gambar, logo, ikon)
+└── src/
+    ├── app/               # Struktur rute halaman (App Router)
+    │   ├── about/         # Halaman profil dan visi-misi
+    │   ├── certifications/# Halaman katalog sertifikasi
+    │   ├── coming-soon/   # Halaman placeholder pemeliharaan
+    │   ├── contacts/      # Halaman formulir kontak
+    │   ├── datasets/      # Halaman daftar dataset
+    │   ├── experience/    # Halaman linimasa pengalaman
+    │   ├── projects/      # Halaman direktori dan detail proyek ([slug])
+    │   ├── layout.tsx     # Tata letak global (Navbar, Footer, Background Grid)
+    │   └── page.tsx       # Beranda utama (Hero, Tech Stack, Featured Projects)
+    ├── components/        # Komponen modular
+    │   ├── layout/        # Navbar & Footer
+    │   ├── sections/      # Bagian konten spesifik per halaman
+    │   ├── style/         # Konfigurasi CSS global (global.css)
+    │   └── ui/            # Komponen UI interaktif (Logo, ScrollToTop, dll.)
+    ├── content/           # Konten dinamis berbasis Markdown (.md)
+    │   └── projects/      # File MD proyek (misal: turnnews.md)
+    ├── data/              # Data statis fallback (sertifikasi, dataset, proyek)
+    └── utils/             # Fungsi pembantu (MDX parser)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ⚙️ Cara Menjalankan Proyek Secara Lokal
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Prasyarat
+Pastikan Anda telah menginstal **Node.js** (versi 18+ direkomendasikan) dan npm/yarn.
 
-## Learn More
+### 2. Instalasi Dependensi
+Jalankan perintah berikut di direktori utama proyek:
+```bash
+npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 3. Jalankan Development Server
+```bash
+npm run dev
+```
+Buka [http://localhost:3000](http://localhost:3000) pada browser Anda untuk melihat hasilnya.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4. Build untuk Produksi
+Untuk melakukan kompilasi proyek sebelum di-deploy:
+```bash
+npm run build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🔒 Konfigurasi Mode Pemeliharaan (*Under Construction*)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Website ini memiliki mekanisme pengunci halaman bawaan:
+- **Master Switch**: Terletak di [`src/app/page.tsx`](file:///d:/My%20Project/my-portofolio/src/app/page.tsx) lewat variabel `isUnderConstruction`.
+- **Perilaku**: Jika bernilai `true`, semua rute produksi akan dilempar ke halaman `/coming-soon`. Namun, jika dijalankan di lokal (`npm run dev`), Anda tetap bisa mengakses dan mengembangkan halaman beranda secara normal.
