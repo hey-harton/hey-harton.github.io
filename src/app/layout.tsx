@@ -6,14 +6,17 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ScrollToTop from "@/components/ui/ScrollToTop"; // KUNCI: Import komponen ScrollToTop
 
+// 1. KONTROL METADATA (SEO & Deskripsi Berkas)
 export const metadata: Metadata = {
   title: "Hartono Adji Susanto | Portfolio",
   description: "Portofolio Profesional Enterprise Networking, Cloud Architecture, & Data Science.",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-  },
+};
+
+// 2. KONTROL VIEWPORT (Dipisah secara mandiri untuk membersihkan warning terminal)
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({

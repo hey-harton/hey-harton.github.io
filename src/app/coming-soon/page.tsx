@@ -1,6 +1,5 @@
 'use client';
 
-// OPTIMASI: Tambahkan useMemo dari react
 import { useState, useEffect, useMemo } from "react";
 import BackgroundEffects from "@/components/sections/coming-soon-page/BackgroundEffects";
 import TopBar from "@/components/sections/coming-soon-page/TopBar";
@@ -75,25 +74,18 @@ export default function ComingSoonPage() {
   const memoizedTopBar = useMemo(() => <TopBar />, []);
   const memoizedBottomBar = useMemo(() => <BottomBar />, []);
   
-  // Panel Kanan HANYA akan dirender ulang jika data commit selesai di-fetch.
-  // Detikan waktu tidak akan mempengaruhinya lagi.
   const memoizedRightPanel = useMemo(
     () => <RightPanel commits={commits} loadingCommits={loadingCommits} />,
     [commits, loadingCommits]
   );
 
   return (
-    // OPTIMASI CSS: Tambahkan overscroll-none untuk mematikan efek pantulan lentur (bounce) bawaan browser HP
     <div className="w-full min-h-[100dvh] lg:h-[100dvh] flex flex-col bg-[#050505] relative lg:overflow-hidden overscroll-none">
-      
-      {/* Merender komponen yang sudah dibekukan */}
       {memoizedBackground}
       {memoizedTopBar}
       
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-12 relative z-10 overflow-hidden transform-gpu">
-        {/* LeftPanel tidak dibekukan karena dia BUTUH pembaruan angka detik (uptime) secara real-time */}
         <LeftPanel uptime={uptime} />
-        
         {memoizedRightPanel}
       </main>
 

@@ -3,7 +3,7 @@ import HeroSection from "@/components/sections/home-page/HeroSection";
 import FeaturedProjects from "@/components/sections/home-page/FeaturedProjects";
 import TechStack from "@/components/sections/home-page/TechStack";
 import HomeCTA from "@/components/sections/home-page/HomeCTA";
-import { getAllProjects } from "@/utils/mdx"; // Pastikan path utils atau lib sesuai dengan folder milikmu
+import { getAllProjects } from "@/utils/mdx"; 
 
 export default function Home() {
   // =================================================================
@@ -12,14 +12,15 @@ export default function Home() {
   // =================================================================
   const isUnderConstruction = true;
 
-  if (isUnderConstruction) {
-    // Alihkan paksa ke rute /coming-soon
-    // Metode ini sangat aman untuk GitHub Pages (Static Export)
-    // dan akan memicu Navbar/Footer untuk otomatis menghilang.
+  // PERBAIKAN: Menambahkan pengecekan process.env.NODE_ENV
+  // Jika saklar menyala DAN kita BUKAN berada di mode pengembangan lokal,
+  // maka lempar pengunjung ke halaman coming-soon.
+  if (isUnderConstruction && process.env.NODE_ENV !== "development") {
     redirect("/coming-soon");
   }
 
   // Pengeksekusian di bawah ini HANYA terjadi jika saklar bernilai 'false'
+  // ATAU jika kamu sedang menjalankannya di lokal (npm run dev)
   const allProjects = getAllProjects();
 
   return (
